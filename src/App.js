@@ -1,13 +1,13 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ProblemSection from './components/ProblemSection';
-import WhyNowSection from './components/WhyNowSection';
-import ValueSection from './components/ValueSection';
-import MenuShowcase from './components/MenuShowcase';
-import ExperienceSection from './components/ExperienceSection';
-import AboutSection from './components/AboutSection';
-import LeadForm from './components/LeadForm';
+import FusionConcept from './components/FusionConcept';
+import MenuExplorer from './components/MenuExplorer';
+import CollectionsSection from './components/CollectionsSection';
+import BrandStory from './components/BrandStory';
+import NekoNekoSection from './components/NekoNekoSection';
+import ManekiMiniSection from './components/ManekiMiniSection';
+import CommunitySection from './components/CommunitySection';
 import Footer from './components/Footer';
 
 function App() {
@@ -16,21 +16,13 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <div className="section-divider" />
-        <ProblemSection />
-        <div className="section-divider" />
-        <WhyNowSection />
-        <div className="section-divider" />
-        <ValueSection />
-        <div className="section-divider" />
-        <MenuShowcase />
-        <div className="section-divider" />
-        <ExperienceSection />
-        <div className="section-divider" />
-        <AboutSection />
-        <div className="section-divider" />
-        <LeadForm />
-        <div className="section-divider" />
+        <FusionConcept />
+        <MenuExplorer />
+        <CollectionsSection />
+        <BrandStory />
+        <NekoNekoSection />
+        <ManekiMiniSection />
+        <CommunitySection />
       </main>
       <Footer />
     </>

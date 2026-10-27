@@ -1,124 +1,79 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Cherry, Menu, X } from 'lucide-react';
-import { images } from '../data/images';
+import { navLinks } from '../data/brand';
 
-const navLinks = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Concepto', href: '#concepto' },
-  { label: 'Menú', href: '#menu' },
-  { label: 'Experiencia', href: '#experiencia' },
-  { label: 'Nosotros', href: '#nosotros' },
-  { label: 'Lista VIP', href: '#lista-vip' },
-];
+const focusableSelector = 'a[href], button:not([disabled])';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const toggleRef = useRef(null);
+  const menuRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (!mobileOpen) return undefined;
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [mobileOpen]);
+    const previousOverflow = document.body.style.overflow;
+    const toggleElement = toggleRef.current;
+    document.body.style.overflow = 'hidden';
+    menuRef.current?.querySelector(focusableSelector)?.focus();
 
-  // Close on Escape key
-  useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === "Escape") setMobileOpen(false);
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setMobileOpen(false);
+        return;
+      }
+      if (event.key !== 'Tab' || !menuRef.current) return;
+      const focusable = [...menuRef.current.querySelectorAll(focusableSelector)];
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
-    if (mobileOpen) {
-      window.addEventListener("keydown", handleEscape);
-    }
-    return () => window.removeEventListener("keydown", handleEscape);
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+      toggleElement?.focus();
+    };
   }, [mobileOpen]);
 
   const closeMobile = () => setMobileOpen(false);
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
-      <div className="navbar-inner">
-        <a href="#inicio" className="navbar-brand" aria-label="Sakura Brew Café — Inicio">
-          <span className={`brand-icon ${images.logoMain ? 'has-logo' : 'no-logo'}`}>
-            {images.logo ? (
-              <img src={images.logoMain} alt="Sakura Brew" />
-            ) : (
-              <Cherry size={20} color="white" />
-            )}
-          </span>
-          Sakura Brew
-        </a>
-
-        <div className="navbar-links">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href}>
-              {link.label}
-            </a>
-          ))}
-          <a href="#lista-vip" className="navbar-cta">
-            Unirme a la lista VIP
-          </a>
+    <header className="phase3-navbar">
+      <nav className="phase3-container phase3-navbar-inner" aria-label="Navegación principal">
+        <a className="phase3-wordmark" href="#inicio">MANEKI</a>
+        <div className="phase3-desktop-links">
+          {navLinks.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
         </div>
-
         <button
-          className="navbar-mobile-toggle"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
+          ref={toggleRef}
+          className="phase3-menu-toggle"
+          type="button"
           aria-expanded={mobileOpen}
           aria-controls="mobile-navigation"
+          aria-label={mobileOpen ? 'Cerrar navegación' : 'Abrir navegación'}
+          onClick={() => setMobileOpen((open) => !open)}
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? 'Cerrar' : 'Menú'}
         </button>
-      </div>
-
+      </nav>
       {createPortal(
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              className="navbar-mobile-menu open"
-              id="mobile-navigation"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Navegación móvil"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-            >
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeMobile}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 + 0.1 }}
-                >
-                  {link.label}
-                </motion.a>
-              ))}
-              <motion.a
-                href="#lista-vip"
-                className="btn-primary"
-                onClick={closeMobile}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                Unirme a la lista VIP
-              </motion.a>
-            </motion.div>
-          )}
-        </AnimatePresence>,
+        mobileOpen ? (
+          <div ref={menuRef} className="phase3-mobile-navigation" id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Navegación móvil">
+            {navLinks.map((link) => <a key={link.href} href={link.href} onClick={closeMobile}>{link.label}</a>)}
+            <a className="phase3-button phase3-button-primary" href="#menu" onClick={closeMobile}>Explorar menú</a>
+          </div>
+        ) : null,
         document.body
       )}
-    </nav>
+    </header>
   );
 }
