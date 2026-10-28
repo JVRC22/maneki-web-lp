@@ -13,10 +13,11 @@ export default function Footer() {
           {navLinks.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}
           <a href="#maneki-mini">Maneki Mini</a>
           <a href="#comunidad">Comunidad</a>
+          <a href="#contacto">Contacto</a>
         </nav>
         <div className="phase5e2-footer-note">
-          <span>Concepto en desarrollo</span>
-          <p>Disponibilidad, precios y canales oficiales se publicarán cuando estén confirmados.</p>
+          <span>Prototipo de presentación</span>
+          <p>Esta experiencia visual muestra un concepto de marca; la disponibilidad y los canales se confirmarán antes de cualquier lanzamiento.</p>
         </div>
       </div>
     </footer>

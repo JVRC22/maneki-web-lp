@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { allMenuItems, menuCategories, starterMenuItems } from '../data/menu';
-import { visualAssets } from '../data/assets';
+import { menuPhotoAssets, visualAssets } from '../data/assets';
 
 const discoveryAnchors = [
   {
@@ -10,7 +10,7 @@ const discoveryAnchors = [
     title: 'Verde y cremoso.',
     copy: 'Matcha frío para entrar al universo Maneki con algo familiar.',
     tone: 'olive',
-    image: visualAssets.heroCutout,
+    image: menuPhotoAssets['matcha-kiss'],
   },
   {
     id: 'coffee-anchor',
@@ -19,7 +19,7 @@ const discoveryAnchors = [
     title: 'Frío, profundo, cercano.',
     copy: 'Café frío y sabores dulces para empezar por lo conocido.',
     tone: 'coffee',
-    image: visualAssets.coffeeCutout,
+    image: menuPhotoAssets['kohi-rocks'],
   },
   {
     id: 'seasonal-anchor',
@@ -41,11 +41,19 @@ const discoveryAnchors = [
 ];
 
 function MenuEntry({ item }) {
+  const image = menuPhotoAssets[item.id];
+
   return (
-    <article className={`phase3-menu-entry phase5-menu-entry phase5e-menu-entry is-${item.type}`}>
-      <div className="phase5e-menu-index" aria-hidden="true">
-        <span>{item.type === 'combo' ? 'C' : item.type === 'extra' ? '+' : 'M'}</span>
-      </div>
+    <article className={`phase3-menu-entry phase5-menu-entry phase5e-menu-entry is-${item.type} ${image ? 'has-photo' : 'no-photo'}`}>
+      {image ? (
+        <div className="phase5f-menu-photo">
+          <img src={image.src} srcSet={image.srcSet} sizes={image.sizes} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" />
+        </div>
+      ) : (
+        <div className="phase5e-menu-index" aria-hidden="true">
+          <span>{item.type === 'combo' ? 'C' : item.type === 'extra' ? '+' : 'M'}</span>
+        </div>
+      )}
       <div className="phase3-menu-copy phase5-menu-copy phase5e-menu-copy">
         <div className="phase3-menu-entry-header">
           <h4>{item.name}</h4>
@@ -59,6 +67,10 @@ function MenuEntry({ item }) {
         )}
       </div>
       <div className="phase3-menu-meta phase5-menu-meta">
+        <div className="phase5f-menu-price" aria-label={`Precio ${item.publicPrice} pesos mexicanos`}>
+          <strong>{item.publicPrice}</strong>
+          <span>MXN</span>
+        </div>
         {item.discoveryLabel && <span className="phase3-menu-label">{item.discoveryLabel}</span>}
         <span className="phase5e-menu-type">{item.type === 'combo' ? 'Para compartir' : item.type === 'extra' ? 'A tu manera' : 'Maneki'}</span>
       </div>
@@ -118,7 +130,7 @@ export default function MenuExplorer() {
         <div className="phase3-section-heading phase5e-menu-intro">
           <p className="phase5e-label">El menú Maneki</p>
           <h2 id="menu-title">Elige con curiosidad.</h2>
-          <p>Empieza con seis antojos, descubre una familia y abre el catálogo completo cuando quieras. Los precios se publicarán cuando estén aprobados.</p>
+          <p>Empieza con seis antojos, descubre una familia y abre el catálogo completo cuando quieras. Cada precio está expresado en pesos mexicanos.</p>
           <div className="phase5e-menu-proof" aria-label="Composición documentada del menú">
             <span><strong>31</strong> bebidas y alimentos</span>
             <span><strong>3</strong> extras</span>
@@ -135,7 +147,12 @@ export default function MenuExplorer() {
             {discoveryAnchors.map((anchor) => (
               <article className={`phase5e-discovery-card is-${anchor.tone}`} key={anchor.id}>
                 <div className="phase5e-discovery-media" aria-hidden={!anchor.image}>
-                  {anchor.image ? <img src={anchor.image.src} alt="" width={anchor.image.width} height={anchor.image.height} loading="lazy" /> : <span className="phase5e-food-mark">ONIGIRI</span>}
+                  {anchor.image ? <img src={anchor.image.src} srcSet={anchor.image.srcSet} sizes={anchor.image.sizes} alt="" width={anchor.image.width} height={anchor.image.height} loading="lazy" /> : (
+                    <span className="phase5j-food-mark">
+                      <strong>ONIGIRI</strong>
+                      <small>empanizado<br />sin alga</small>
+                    </span>
+                  )}
                 </div>
                 <div className="phase5e-discovery-copy">
                   <p>{anchor.eyebrow}</p>
@@ -146,6 +163,7 @@ export default function MenuExplorer() {
               </article>
             ))}
           </div>
+          <p className="phase5e-discovery-hint" aria-hidden="true">Desliza para descubrir más →</p>
         </div>
 
         <div className="phase3-menu-tabs-wrap">

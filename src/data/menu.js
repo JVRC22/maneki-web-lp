@@ -32,6 +32,19 @@ const familyById = {
   'sando-biscoff': 'Creamy sando',
 };
 
+const confirmedPrice = (display) => {
+  const numericValue = display.replace(/\+/g, '').replace(/\$/g, '').replace('–', '-');
+  const [minimum, maximum] = numericValue.split('-').map(Number);
+
+  return {
+    currency: 'MXN',
+    display,
+    minimum,
+    maximum: maximum || minimum,
+    isRange: Boolean(maximum),
+  };
+};
+
 const product = (id, category, name, flavors, level, documentedPrice, description) => ({
   id,
   category,
@@ -45,8 +58,9 @@ const product = (id, category, name, flavors, level, documentedPrice, descriptio
     Novedad: 'Algo distinto',
   }[level],
   documentedPrice,
-  publicPrice: null,
-  priceStatus: 'PROPOSED',
+  publicPrice: documentedPrice,
+  price: confirmedPrice(documentedPrice),
+  priceStatus: 'CONFIRMED',
   description,
   type: 'product',
 });
@@ -96,17 +110,17 @@ export const menuItems = [
 ];
 
 export const menuExtras = [
-  { id: 'cloud-foam', category: 'extras', family: 'Extras', name: 'Cloud Foam', description: 'Foam opcional para personalizar tu bebida.', options: ['Vainilla', 'Cajeta', 'Lechera', 'Plátano', 'Fresa', 'Biscoff', 'Nutella', 'Oreo', 'Mazapán', 'Pistache'], documentedPrice: '+$10–12', publicPrice: null, priceStatus: 'PROPOSED', type: 'extra' },
-  { id: 'pop-pearls', category: 'extras', family: 'Extras', name: 'Pop Pearls', description: 'Bolitas que explotan como adicional.', options: [], documentedPrice: '+$10', publicPrice: null, priceStatus: 'PROPOSED', type: 'extra' },
-  { id: 'bubble-tapioca', category: 'extras', family: 'Extras', name: 'Bubble Tapioca', description: 'Tapioca como adicional.', options: [], documentedPrice: '+$10', publicPrice: null, priceStatus: 'PROPOSED', type: 'extra' },
+  { id: 'cloud-foam', category: 'extras', family: 'Extras', name: 'Cloud Foam', description: 'Foam opcional para personalizar tu bebida.', options: ['Vainilla', 'Cajeta', 'Lechera', 'Plátano', 'Fresa', 'Biscoff', 'Nutella', 'Oreo', 'Mazapán', 'Pistache'], documentedPrice: '+$10–12', publicPrice: '+$10–12', price: confirmedPrice('+$10–12'), priceStatus: 'CONFIRMED', type: 'extra' },
+  { id: 'pop-pearls', category: 'extras', family: 'Extras', name: 'Pop Pearls', description: 'Bolitas que explotan como adicional.', options: [], documentedPrice: '+$10', publicPrice: '+$10', price: confirmedPrice('+$10'), priceStatus: 'CONFIRMED', type: 'extra' },
+  { id: 'bubble-tapioca', category: 'extras', family: 'Extras', name: 'Bubble Tapioca', description: 'Tapioca como adicional.', options: [], documentedPrice: '+$10', publicPrice: '+$10', price: confirmedPrice('+$10'), priceStatus: 'CONFIRMED', type: 'extra' },
 ];
 
 export const menuCombos = [
-  { id: 'combo-neko', category: 'combos', family: 'Combos', name: 'Combo Neko', description: '1 bebida fría + 1 onigiri.', documentedPrice: '$160', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
-  { id: 'combo-maneki', category: 'combos', family: 'Combos', name: 'Combo Maneki', description: '1 bebida fría + 1 postre.', documentedPrice: '$130', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
-  { id: 'combo-yume', category: 'combos', family: 'Combos', name: 'Combo Yume', description: '2 postres + 2 bebidas.', documentedPrice: '$220', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
-  { id: 'combo-matcha-lover', category: 'combos', family: 'Combos', name: 'Combo Matcha Lover', description: 'Matcha Kiss + Matcha Cloud.', documentedPrice: '$150', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
-  { id: 'combo-onigiri-bebida', category: 'combos', family: 'Combos', name: 'Combo Onigiri + Bebida', description: 'Onigiri Crunch + bebida fría.', documentedPrice: '$160', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
+  { id: 'combo-neko', category: 'combos', family: 'Combos', name: 'Combo Neko', description: '1 bebida fría + 1 onigiri.', documentedPrice: '$160', publicPrice: '$160', price: confirmedPrice('$160'), priceStatus: 'CONFIRMED', type: 'combo' },
+  { id: 'combo-maneki', category: 'combos', family: 'Combos', name: 'Combo Maneki', description: '1 bebida fría + 1 postre.', documentedPrice: '$130', publicPrice: '$130', price: confirmedPrice('$130'), priceStatus: 'CONFIRMED', type: 'combo' },
+  { id: 'combo-yume', category: 'combos', family: 'Combos', name: 'Combo Yume', description: '2 postres + 2 bebidas.', documentedPrice: '$220', publicPrice: '$220', price: confirmedPrice('$220'), priceStatus: 'CONFIRMED', type: 'combo' },
+  { id: 'combo-matcha-lover', category: 'combos', family: 'Combos', name: 'Combo Matcha Lover', description: 'Matcha Kiss + Matcha Cloud.', documentedPrice: '$150', publicPrice: '$150', price: confirmedPrice('$150'), priceStatus: 'CONFIRMED', type: 'combo' },
+  { id: 'combo-onigiri-bebida', category: 'combos', family: 'Combos', name: 'Combo Onigiri + Bebida', description: 'Onigiri Crunch + bebida fría.', documentedPrice: '$160', publicPrice: '$160', price: confirmedPrice('$160'), priceStatus: 'CONFIRMED', type: 'combo' },
 ];
 
 export const allMenuItems = [...menuItems, ...menuExtras, ...menuCombos];
@@ -128,5 +142,5 @@ export const menuMeta = {
   comboCount: menuCombos.length,
   starterCount: starterMenuItems.length,
   documentedBaseVariantCount: 60,
-  publicPriceStatus: 'PENDING_APPROVAL',
+  publicPriceStatus: 'CONFIRMED',
 };

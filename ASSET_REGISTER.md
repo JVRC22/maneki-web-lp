@@ -10,6 +10,49 @@
 
 The prototype now includes a small, optimized subset of the supplied conceptual references. Original reference files remain untouched in `/Users/jresendiz/Workspaces/Maneki/Referencias`.
 
+## Phase 5F menu photography
+
+The original verified package was `/Users/jresendiz/Workspaces/Maneki/Referencias/MANEKI_menu_web_assets`. Phase 5H replaces those derivatives with the preferred V2 package at `/Users/jresendiz/Workspaces/Maneki/Referencias/MANEKI_Menu_V2`. The destination now serves 13 defensible product mappings with 600px and 1200px WebP variants through `srcset`; these remain optimized/interpolated menu concepts from low-resolution PDF sources, not commercially approved final photography.
+
+| Source photograph | Destination asset | Menu use | Mapping status | Notes |
+|---|---|---|---|---|
+| `01-cafe-frio-cajeta.webp` | `public/images/menu/kohi-rocks.webp` | Kohi Rocks | PROBABLE PRODUCT MATCH | Cajeta coffee appearance; recipe still requires final confirmation. |
+| `02-frappe-chocolate-oreo.webp` | `public/images/menu/tokyo-frappe.webp` | Tokyo Frappé | PROBABLE PRODUCT MATCH | Chocolate and cookie presentation; exact topping not claimed. |
+| `03-matcha-frio-clasico.webp` | `public/images/menu/matcha-kiss.webp` | Matcha Kiss | PROBABLE PRODUCT MATCH | Plain cold matcha presentation. |
+| `04-matcha-frio-crema-galleta.webp` | `public/images/menu/midori-cloud.webp` | Midori Cloud | PROBABLE PRODUCT MATCH | Cream and dark cookie elements are visible. |
+| `06-refresher-frutos-rojos.webp` | `public/images/menu/kuro-berry.webp` | Kuro Berry | PROBABLE PRODUCT MATCH | Red-fruit presentation; exact flavor combination is not asserted. |
+| `07-limonada-limon.webp` | `public/images/menu/limon-neko.webp` | Limón Neko | PROBABLE PRODUCT MATCH | Lemon slices and mineral-lemonade appearance. |
+| `09-cafe-caliente-americano.webp` | `public/images/menu/kohi-americano.webp` | Kohi Americano | PROBABLE PRODUCT MATCH | Black hot coffee. |
+| `10-cafe-caliente-latte.webp` | `public/images/menu/kohi-latte.webp` | Kohi Latte | PROBABLE PRODUCT MATCH | Latte-art coffee. |
+| `11-matcha-caliente-latte.webp` | `public/images/menu/matcha-cloud.webp` | Matcha Cloud | PROBABLE PRODUCT MATCH | Hot matcha latte presentation. |
+| `17-pancakes-chocolate.webp` | `public/images/menu/pancake-neko.webp` | Pancake Neko | PROBABLE PRODUCT MATCH | Chocolate pancake family presentation. |
+| `18-pancakes-fruta.webp` | `public/images/menu/pancake-fruity.webp` | Pancake Fruity | PROBABLE PRODUCT MATCH | Strawberry and banana are visible. |
+| `19-mantou-crema.webp` | `public/images/menu/mantou-cloud.webp` | Mantou Cloud | PROBABLE PRODUCT MATCH | Cream-filled mantou presentation. |
+| `22-sando-chocolate-platano.webp` | `public/images/menu/sando-choco.webp` | Sando Choco | PROBABLE PRODUCT MATCH | Chocolate and banana are visible. |
+
+The V2 package's other supplied photographs remain excluded from individual product cards. The three onigiri images visibly include seaweed, which conflicts with the documented “sin alga” menu; the pink/tropical refreshers, teas, mantou-chocolate, fruit-sando, and extras images are family-level or ingredient-ambiguous references. The eight transparent cutouts were inspected and excluded because their glass, ice, and edge segmentation remains too provisional for these compact product rows. The older V1 package remains available in `Referencias` for comparison and fallback.
+
+The 13 V2 small derivatives are used as the default source and the corresponding 1200px derivatives are offered as high-density candidates. The V2 package reports that the original source imagery ranges from 137–565px wide; the larger exports improve delivery flexibility but do not add optical detail.
+
+Confirmed prices are now rendered publicly in `src/data/menu.js` as MXN values, including explicit ranges and extra charges. No “Precio por confirmar” state remains in the customer-facing menu.
+
+## Phase 5G brand and collectible integration
+
+The verified source package is `/Users/jresendiz/Workspaces/Maneki/Referencias/MANEKI_Brand_Merch_Web_2026`. Only eight optimized WebP derivatives were copied into `public/images/maneki/brand/`; the source package, originals, PNG cutouts, contact sheets, and unselected references remain outside the application. Every integrated file is conceptual prototype artwork and is not evidence of an operating location, staff, inventory, an active loyalty program, or commercially approved merchandise.
+
+| Source reference | Optimized derivative | Section | Use and status | Replacement / limitation |
+|---|---|---|---|---|
+| `neko-neko-caja-sorpresa-sin-fondo.webp` | `public/images/maneki/brand/neko-neko-box.webp` | Neko Neko Adventures | Main surprise-box anchor; CONCEPTUAL BRAND REFERENCE | Provisional alpha edges; replace with cleared packaging artwork before public merchandise claims. |
+| `neko-neko-llavero-negro-clasico-sin-fondo.webp` | `public/images/maneki/brand/neko-neko-black.webp` | Neko Neko and Neko Neko Adventures | Primary transparent Neko Neko character visual and black classic collectible variant; CONCEPTUAL BRAND REFERENCE | Provisional transparent cutout; not a purchasable product or approved mascot master. |
+| `neko-neko-llavero-negro-gafas-sin-fondo.webp` | `public/images/maneki/brand/neko-neko-glasses.webp` | Neko Neko Adventures | Black glasses collectible variant; CONCEPTUAL BRAND REFERENCE | Provisional transparent cutout; not a purchasable product. |
+| `neko-neko-llavero-rosa-sin-fondo.webp` | `public/images/maneki/brand/neko-neko-pink.webp` | Neko Neko Adventures | Pink collectible variant; CONCEPTUAL BRAND REFERENCE | Provisional transparent cutout; not a purchasable product. |
+| `Phase 5J original conceptual illustration` | `public/images/maneki/brand/maneki-mini-illustration.svg` | Maneki Mini | Purpose-built physical kiosk illustration with sign, service window, awning, menu marks, and wheels; CONCEPTUAL BRAND REFERENCE | Prototype illustration only. It does not depict an operating location, inventory, or a confirmed university installation. |
+| `maneki-uniformes-frente.webp` | `public/images/maneki/brand/uniform-front.webp` | Community / identity | Front view paired with back view; CONCEPTUAL BRAND REFERENCE | Proposed staff identity, not merchandise or evidence of current staff. |
+| `maneki-uniformes-espalda.webp` | `public/images/maneki/brand/uniform-back.webp` | Community / identity | Back view paired with front view; CONCEPTUAL BRAND REFERENCE | Proposed staff identity, not merchandise or evidence of current staff. |
+| `maneki-tarjeta-lealtad-sin-fondo.webp` | `public/images/maneki/brand/loyalty-card.webp` | Community / identity | Future loyalty-card concept; CONCEPTUAL BRAND REFERENCE | No active rewards program or enrollment is offered. |
+
+The circular signage cutout, assembled campaign-packaging photograph, full cart photograph, weak cart crop, original contextual photographs, and alternate PNG/WebP exports were intentionally excluded. The 13 defensible menu mappings were retained but refreshed to V2 derivatives; no ambiguous V2 image was assigned to a named product.
+
 ## Phase 4C–5A prototype integration
 
 These files are conceptual brand artwork for an academic prototype. They are not approved commercial assets, proof of operating locations, available inventory, or final logo masters.
@@ -34,7 +77,7 @@ These derivatives were generated from the supplied Maneki concepts or created as
 
 ### Excluded from prototype integration
 
-Storefronts, coffee trailers, interiors, uniforms, signage, third-party café photography, and architectural references remain excluded. They could imply an existing Maneki location or carry rights limitations. The product menu also remains family-level and typography-led because no remaining reference can be matched confidently to the documented 39 entries without misrepresenting the product.
+Storefronts, full coffee-trailer photographs, interiors, signage, third-party café photography, and architectural references remain excluded. The selected cropped cart detail and uniform concepts are documented separately as non-operational identity concepts. They could imply an existing Maneki location or carry rights limitations. The product menu remains compact and selectively photographed because no remaining reference can be matched confidently to every documented entry without misrepresenting the product.
 
 ## Reference inventory
 

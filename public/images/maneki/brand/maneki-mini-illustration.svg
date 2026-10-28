@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+  <title id="title">Concepto de kiosco móvil Maneki Mini</title>
+  <desc id="desc">Un kiosco móvil Maneki con marquesina rosa, cuerpo marfil, ventanilla de servicio, latas y ruedas sobre un piso verde oliva.</desc>
+  <rect width="960" height="620" fill="#515B3A"/>
+  <path d="M0 486h960v134H0z" fill="#1E1D1A"/>
+  <circle cx="800" cy="118" r="148" fill="#DDA7B8"/>
+  <path d="M628 108c40-45 122-50 181-11 47 31 56 91 21 131-52-39-115-56-202-42z" fill="#F6F1E7" opacity=".88"/>
+  <path d="M124 274l71-92h587l82 92v222H124z" fill="#F6F1E7"/>
+  <path d="M124 274h740v42H124z" fill="#1E1D1A"/>
+  <path d="M176 180h624l-34-65H211z" fill="#DDA7B8"/>
+  <path d="M226 115h74l-20 65h-74zM374 115h74l-20 65h-74zM522 115h74l-20 65h-74zM670 115h74l-20 65h-74z" fill="#F6F1E7"/>
+  <path d="M108 274h772l-28 34H136z" fill="#782F36"/>
+  <rect x="208" y="218" width="570" height="52" rx="4" fill="#1E1D1A"/>
+  <text x="493" y="253" fill="#F6F1E7" font-family="Arial, sans-serif" font-size="31" font-weight="900" letter-spacing="11" text-anchor="middle">MANEKI MINI</text>
+  <rect x="182" y="338" width="382" height="128" fill="#515B3A"/>
+  <path d="M208 378h330v60H208z" fill="#1E1D1A"/>
+  <path d="M231 400h96M253 418h162" stroke="#F6F1E7" stroke-linecap="round" stroke-width="10"/>
+  <rect x="598" y="324" width="190" height="166" fill="#782F36"/>
+  <path d="M620 347h146v74H620z" fill="#FFFDF8"/>
+  <path d="M638 365h110" stroke="#DDA7B8" stroke-width="8"/>
+  <path d="M675 392h40" stroke="#515B3A" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="645" cy="445" r="15" fill="#515B3A"/>
+  <circle cx="700" cy="445" r="15" fill="#515B3A"/>
+  <circle cx="755" cy="445" r="15" fill="#515B3A"/>
+  <path d="M124 496h740" stroke="#F6F1E7" stroke-width="10"/>
+  <path d="M176 496h636v26H176z" fill="#782F36"/>
+  <circle cx="250" cy="536" r="43" fill="#1E1D1A"/>
+  <circle cx="250" cy="536" r="16" fill="#DDA7B8"/>
+  <circle cx="736" cy="536" r="43" fill="#1E1D1A"/>
+  <circle cx="736" cy="536" r="16" fill="#DDA7B8"/>
+  <path d="M75 531h56M829 531h56" stroke="#DDA7B8" stroke-linecap="round" stroke-width="8"/>
+  <text x="95" y="76" fill="#F6F1E7" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="2">BEBIDAS + ANTOJOS</text>
+  <text x="95" y="566" fill="#F6F1E7" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="1">CONCEPTO PARA UNIVERSIDAD</text>
+</svg>

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { collections } from '../data/brand';
-import { visualAssets } from '../data/assets';
+import { brandAssets, visualAssets } from '../data/assets';
 import { motion, useEditorialReveal } from './EditorialReveal';
 import { gsap, prefersReducedMotion, useGSAP } from '../motion/gsap';
 
@@ -56,18 +56,23 @@ export default function CollectionsSection() {
     });
 
     collectibleScene
-      .fromTo('.phase5e2-collectible-box',
+      .fromTo('.phase5g-collectible-box',
         { opacity: 0, transform: `translate3d(${isMobile ? '12px' : '32px'}, ${isMobile ? '18px' : '28px'}, 0) rotate(4deg) scale(0.94)` },
         { opacity: 1, transform: 'translate3d(0, 0, 0) rotate(0deg) scale(1)', duration: 0.62, ease: 'power3.out' }
       )
-      .fromTo('.phase5e2-collectible-plush',
+      .fromTo('.phase5g-collectible-black',
         { opacity: 0, transform: `translate3d(${isMobile ? '-10px' : '-22px'}, 20px, 0) rotate(-7deg) scale(0.94)` },
-        { opacity: 1, transform: 'translate3d(0, 0, 0) rotate(-4deg) scale(1)', duration: 0.62, ease: 'power3.out' },
+        { opacity: 1, transform: 'translate3d(0, 0, 0) rotate(-5deg) scale(1)', duration: 0.62, ease: 'power3.out' },
         '-=0.38'
       )
-      .fromTo('.phase5e2-collectible-display',
-        { opacity: 0, transform: 'translate3d(0, 24px, 0) scale(0.96)' },
-        { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)', duration: 0.58, ease: 'power3.out' },
+      .fromTo('.phase5g-collectible-glasses',
+        { opacity: 0, transform: `translate3d(${isMobile ? '8px' : '18px'}, 24px, 0) rotate(6deg) scale(0.94)` },
+        { opacity: 1, transform: 'translate3d(0, 0, 0) rotate(5deg) scale(1)', duration: 0.58, ease: 'power3.out' },
+        '-=0.44'
+      )
+      .fromTo('.phase5g-collectible-pink',
+        { opacity: 0, transform: `translate3d(0, ${isMobile ? '18px' : '24px'}, 0) rotate(3deg) scale(0.94)` },
+        { opacity: 1, transform: 'translate3d(0, 0, 0) rotate(2deg) scale(1)', duration: 0.58, ease: 'power3.out' },
         '-=0.42'
       );
 
@@ -91,7 +96,7 @@ export default function CollectionsSection() {
           <motion.article className="phase3-collection phase3-collection-feature phase5e-seasonal-campaign phase5e2-seasonal-campaign" {...reveal(0.12)}>
             <div className="phase3-collection-copy phase5e-seasonal-copy">
               <p className="phase5e-seasonal-label">Pink fruit · Neko Neko · por imaginar</p>
-              <h3>Algo nuevo cambia el ritmo.</h3>
+              <h3><span>Algo nuevo</span><span>cambia el</span><span>ritmo.</span></h3>
               <p>Una colección visual para cuando Maneki quiera ponerse más fresco, frutal y juguetón.</p>
               <span className="phase5e-concept-note">Concepto en evaluación.</span>
             </div>
@@ -109,36 +114,46 @@ export default function CollectionsSection() {
 
           <motion.article className="phase5e2-collectible-scene" {...reveal(0.18)} aria-labelledby="collectibles-title">
             <div className="phase5e2-collectible-copy">
-              <h3 id="collectibles-title">{collectibles.title}</h3>
+              <h3 id="collectibles-title"><span>Neko Neko</span><span>Adventures</span></h3>
               <p>{collectibles.description}</p>
-              <span>Un universo para coleccionar, no una tienda activa.</span>
+              <span>Variantes conceptuales de un universo de cajas sorpresa, no una tienda activa.</span>
             </div>
             <div className="phase5e2-collectible-stage" aria-label="Escena conceptual de Neko Neko Adventures">
               <div className="phase5e2-collectible-ground" aria-hidden="true" />
+              <span className="phase5g-collectible-label">Caja sorpresa · variantes Neko Neko</span>
               <img
-                className="phase5e2-collectible-box"
-                src={visualAssets.collectibles.src}
-                alt={visualAssets.collectibles.alt}
-                width={visualAssets.collectibles.width}
-                height={visualAssets.collectibles.height}
+                className="phase5g-collectible-box"
+                src={brandAssets.collectibleBox.src}
+                alt={brandAssets.collectibleBox.alt}
+                width={brandAssets.collectibleBox.width}
+                height={brandAssets.collectibleBox.height}
                 loading="lazy"
               />
               <img
-                className="phase5e2-collectible-plush"
-                src={visualAssets.neko.src}
-                alt="Peluche conceptual de Neko Neko integrado en la escena del universo coleccionable."
-                width={visualAssets.neko.width}
-                height={visualAssets.neko.height}
+                className="phase5g-collectible-variant phase5g-collectible-black"
+                src={brandAssets.collectibleBlack.src}
+                alt={brandAssets.collectibleBlack.alt}
+                width={brandAssets.collectibleBlack.width}
+                height={brandAssets.collectibleBlack.height}
                 loading="lazy"
               />
               <img
-                className="phase5e2-collectible-display"
-                src={visualAssets.collectibleDisplay.src}
-                alt={visualAssets.collectibleDisplay.alt}
-                width={visualAssets.collectibleDisplay.width}
-                height={visualAssets.collectibleDisplay.height}
+                className="phase5g-collectible-variant phase5g-collectible-glasses"
+                src={brandAssets.collectibleGlasses.src}
+                alt={brandAssets.collectibleGlasses.alt}
+                width={brandAssets.collectibleGlasses.width}
+                height={brandAssets.collectibleGlasses.height}
                 loading="lazy"
               />
+              <img
+                className="phase5g-collectible-variant phase5g-collectible-pink"
+                src={brandAssets.collectiblePink.src}
+                alt={brandAssets.collectiblePink.alt}
+                width={brandAssets.collectiblePink.width}
+                height={brandAssets.collectiblePink.height}
+                loading="lazy"
+              />
+              <span className="phase5g-collectible-note">Concepto de colección · sin compra activa</span>
             </div>
           </motion.article>
         </div>

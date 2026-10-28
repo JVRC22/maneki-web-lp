@@ -25,20 +25,23 @@ test('filters the complete menu by category using accessible tabs', () => {
   expect(screen.getByRole('tab', { name: 'Bebidas calientes' })).toHaveAttribute('aria-selected', 'true');
 });
 
-test('keeps pending prices concise and preserves family details across filters', () => {
+test('renders confirmed prices and preserves family details across filters', () => {
   render(<App />);
 
-  expect(screen.getByText(/Los precios se publicarán cuando estén aprobados\./)).toBeInTheDocument();
+  expect(screen.getByText(/Cada precio está expresado en pesos mexicanos\./)).toBeInTheDocument();
   expect(screen.queryByText('Precio por confirmar')).not.toBeInTheDocument();
+  expect(screen.getAllByLabelText('Precio $75 pesos mexicanos').length).toBeGreaterThan(0);
   expect(screen.getByText(/Vainilla · Lechera · Cajeta/)).toBeInTheDocument();
 
   fireEvent.click(screen.getByRole('tab', { name: 'Combos' }));
   expect(screen.getByRole('heading', { level: 3, name: 'Combos' })).toBeInTheDocument();
   expect(screen.getByText('Combo Onigiri + Bebida')).toBeInTheDocument();
+  expect(screen.getAllByLabelText('Precio $160 pesos mexicanos').length).toBeGreaterThan(0);
 
   fireEvent.click(screen.getByRole('tab', { name: 'Extras' }));
   expect(screen.getByRole('heading', { level: 3, name: 'Extras' })).toBeInTheDocument();
   expect(screen.getByText(/Vainilla · Cajeta · Lechera/)).toBeInTheDocument();
+  expect(screen.getByLabelText('Precio +$10–12 pesos mexicanos')).toBeInTheDocument();
 });
 
 test('starts with a concise menu discovery set without hiding the full catalog', () => {
@@ -65,13 +68,40 @@ test('supports arrow-key movement between menu categories', () => {
   expect(screen.getByRole('tab', { name: 'Bebidas frías' })).toHaveFocus();
 });
 
-test('keeps the documented menu families and pending price policy in data', () => {
+test('keeps all documented menu entries and confirmed price data', () => {
   expect(menuItems).toHaveLength(menuMeta.documentedProductCount);
   expect(menuExtras).toHaveLength(menuMeta.extraCount);
   expect(menuCombos).toHaveLength(menuMeta.comboCount);
   expect(allMenuItems).toHaveLength(39);
   expect(starterMenuItems).toHaveLength(menuMeta.starterCount);
-  expect(allMenuItems.every((item) => item.publicPrice === null)).toBe(true);
+  expect(menuMeta.publicPriceStatus).toBe('CONFIRMED');
+  expect(allMenuItems.every((item) => item.publicPrice && item.priceStatus === 'CONFIRMED')).toBe(true);
+  expect(allMenuItems.every((item) => item.price.currency === 'MXN' && item.price.display === item.publicPrice)).toBe(true);
+
+  const expectedPrices = {
+    'kohi-rocks': '$75', 'tokyo-frappe': '$80', 'yume-latte': '$85',
+    'matcha-kiss': '$75', 'midori-cloud': '$80', 'hanami-dream': '$85',
+    'zen-citrus': '$65–75', 'kuro-berry': '$70–75', 'yuzu-bloom': '$80–85',
+    'limon-neko': '$65', 'maneki-lime': '$70', 'yuzu-breeze': '$75', 'bubble-pop': '$80',
+    'kohi-americano': '$50', 'kohi-latte': '$65', 'dalgona-warm': '$70–72',
+    'ocha-classic': '$55', 'ocha-bloom': '$65', 'matcha-cloud': '$75–80',
+    'onigiri-crunch': '$100', 'onigiri-ocean': '$95', 'onigiri-teri': '$100',
+    'pancake-neko': '$65–75', 'pancake-fruity': '$75', 'pancake-dream': '$95–110',
+    'mantou-cloud': '$70', 'mantou-choco': '$75', 'mantou-crunch': '$75',
+    'sando-cloud': '$65', 'sando-choco': '$75', 'sando-biscoff': '$85',
+    'cloud-foam': '+$10–12', 'pop-pearls': '+$10', 'bubble-tapioca': '+$10',
+    'combo-neko': '$160', 'combo-maneki': '$130', 'combo-yume': '$220',
+    'combo-matcha-lover': '$150', 'combo-onigiri-bebida': '$160',
+  };
+  expect(Object.fromEntries(allMenuItems.map((item) => [item.id, item.publicPrice]))).toEqual(expectedPrices);
+});
+
+test('uses only verified menu-photo mappings for product imagery', () => {
+  render(<App />);
+
+  expect(screen.getByRole('img', { name: /Café frío Maneki con cajeta/i })).toHaveAttribute('loading', 'lazy');
+  expect(screen.getByRole('img', { name: /Matcha frío Maneki clásico/i })).toHaveAttribute('loading', 'lazy');
+  expect(screen.queryByRole('img', { name: /Onigiri/i })).not.toBeInTheDocument();
 });
 
 test('isolates the mobile navigation and restores focus after closing', () => {
@@ -100,10 +130,13 @@ test('integrates conceptual visuals with truthful alternative text and loading p
 
   const matchaImages = screen.getAllByRole('img', { name: /lata conceptual de matcha/i });
   expect(matchaImages.find((image) => image.getAttribute('fetchpriority') === 'high')).toBeTruthy();
+  expect(screen.getByRole('heading', { level: 3, name: 'Neko Neko Adventures' })).toBeInTheDocument();
   expect(screen.getByRole('img', { name: /gato negro de peluche/i })).toHaveAttribute('loading', 'lazy');
-  expect(screen.getByRole('img', { name: /empaque conceptual de neko neko adventures/i })).toHaveAttribute('loading', 'lazy');
-  expect(screen.getByRole('img', { name: /display conceptual de neko neko adventures/i })).toHaveAttribute('loading', 'lazy');
+  expect(screen.getByRole('img', { name: /caja conceptual armada de neko neko adventures/i })).toHaveAttribute('loading', 'lazy');
+  expect(screen.getByRole('img', { name: /variante conceptual de llavero neko neko negro con gafas/i })).toHaveAttribute('loading', 'lazy');
+  expect(screen.getByRole('img', { name: /variante conceptual de llavero neko neko rosa/i })).toHaveAttribute('loading', 'lazy');
   expect(screen.getByRole('img', { name: /bebida rosada conceptual/i })).toHaveAttribute('loading', 'lazy');
+  expect(screen.getByRole('img', { name: /ilustración conceptual de un carrito móvil maneki/i })).toHaveAttribute('src', '/images/maneki/brand/maneki-mini-illustration.svg');
 });
 
 test('switches the featured specimen without changing the menu state', () => {
@@ -114,4 +147,19 @@ test('switches the featured specimen without changing the menu state', () => {
   expect(screen.getByRole('tab', { name: 'Por temporada' })).toHaveAttribute('aria-selected', 'true');
   expect(screen.getByRole('tabpanel', { name: 'Por temporada' })).toHaveTextContent('Colección conceptual en evaluación.');
   expect(screen.getByRole('tabpanel', { name: 'Todo el menú' })).toBeInTheDocument();
+});
+
+test('validates the clearly labeled contact demonstration without sending data', () => {
+  render(<App />);
+
+  fireEvent.click(screen.getByRole('button', { name: 'Validar demostración' }));
+  expect(screen.getByRole('alert')).toHaveTextContent('Revisa los campos marcados');
+
+  fireEvent.change(screen.getByLabelText(/^Nombre/), { target: { value: 'Mariana' } });
+  fireEvent.change(screen.getByLabelText(/^Correo electrónico/), { target: { value: 'mariana@example.com' } });
+  fireEvent.change(screen.getByLabelText(/^Motivo de contacto/), { target: { value: 'mini' } });
+  fireEvent.change(screen.getByLabelText(/^Mensaje/), { target: { value: 'Me interesa llevar Maneki Mini a mi universidad.' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Validar demostración' }));
+
+  expect(screen.getByText(/Demostración completada\./)).toHaveTextContent('no se envió a ningún destinatario');
 });
