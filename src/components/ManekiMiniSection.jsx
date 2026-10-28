@@ -1,19 +1,24 @@
 import React from 'react';
 import { manekiMini } from '../data/brand';
+import { motion, useEditorialReveal } from './EditorialReveal';
 
 export default function ManekiMiniSection() {
+  const reveal = useEditorialReveal();
+
   return (
-    <section className="phase3-section phase3-mini" id="maneki-mini" aria-labelledby="mini-title">
-      <div className="phase3-container phase3-mini-inner">
-        <div>
-          <p className="phase3-kicker">Maneki Mini</p>
+    <section className="phase3-section phase3-mini phase5e2-mini" id="maneki-mini" aria-labelledby="mini-title">
+      <div className="phase3-container phase5e2-mini-shell">
+        <motion.div className="phase5e2-mini-heading" {...reveal()}>
           <h2 id="mini-title">{manekiMini.title}</h2>
           <p>{manekiMini.description}</p>
-        </div>
-        <div className="phase3-pending-action">
-          <span>Contacto por confirmar</span>
-          <p>Aún no hay un número público verificado para recibir propuestas.</p>
-        </div>
+        </motion.div>
+        <motion.div className="phase5e2-mini-invite" {...reveal(0.1)}>
+          <span className="phase5e2-mini-campus" aria-hidden="true">UNIVERSIDAD</span>
+          <strong>¿Te gustaría que seamos parte de tu universidad?</strong>
+          <p>La propuesta: un punto Maneki pequeño, portátil y cercano para descubrir bebidas y comida de inspiración asiática.</p>
+          <span className="phase5e2-mini-status">Contacto por confirmar</span>
+          <small>Aún no hay un número público verificado para recibir propuestas.</small>
+        </motion.div>
       </div>
     </section>
   );

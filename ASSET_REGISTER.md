@@ -8,7 +8,33 @@
 - **REQUIRES RIGHTS/APPROVAL:** potentially usable only after ownership, permission, and brand approval are established.
 - **MISSING:** required for the first release but not present in the reference directory or destination repository.
 
-No files were copied or modified during this phase.
+The prototype now includes a small, optimized subset of the supplied conceptual references. Original reference files remain untouched in `/Users/jresendiz/Workspaces/Maneki/Referencias`.
+
+## Phase 4C–5A prototype integration
+
+These files are conceptual brand artwork for an academic prototype. They are not approved commercial assets, proof of operating locations, available inventory, or final logo masters.
+
+| Original reference | Optimized derivative | Section | Selection rationale | Status / replacement requirement |
+|---|---|---|---|---|
+| `Imagenes/WhatsApp Image 2026-10-26 at 18.46.55 (1).jpeg` (938×976, 55,403 bytes) | `public/images/maneki/hero-matcha-concept.webp` (900×937, 32,324 bytes) | Hero | Neutral background, recognizable transparent matcha can, strong product silhouette, minimal crop risk. | CONCEPTUAL BRAND REFERENCE. Replace with approved product photography before commercial publication. |
+| `Imagenes/Gemini_Generated_Image_xnqlrxnqlrxnqlrx.jpg` (1024×1024, 562,717 bytes) | `public/images/maneki/neko-plush-concept.webp` (800×800, 33,356 bytes) | Neko Neko | Consistent black-cat silhouette, red collar, bell, expressive face, and clear subject separation. | CONCEPTUAL BRAND REFERENCE. Replace with cleared Neko Neko artwork or approved photography. |
+| `Imagenes/Gemini_Generated_Image_7yty3k7yty3k7yty.jpg` (704×1522, 673,952 bytes) | `public/images/maneki/collectible-box-concept.webp` (640×1384, 69,294 bytes) | Neko Neko Adventures | Strongest readable blind-box presentation and cohesive line-art language. | CONCEPTUAL BRAND REFERENCE. Replace with approved packaging artwork before merchandise claims. |
+| `Imagenes/WhatsApp Image 2026-10-26 at 19.09.26 (1).jpeg` (1179×1162, 118,123 bytes; tightly cropped) | `public/images/maneki/seasonal-pink-drink-concept.webp` (700×819, 32,460 bytes) | Seasonal collections | Pink fruit-inspired drink provides a controlled seasonal accent without adding a product name, price, date, or promotion. | CONCEPTUAL BRAND REFERENCE. Replace with an approved seasonal image if a specific collection becomes public. |
+| `Imagenes/Gemini_Generated_Image_sas8n2sas8n2sas8.jpg` (704×1522, 710,053 bytes) | `public/images/maneki/neko-adventures-display-concept.webp` (540×1080, 67,858 bytes) | Neko Neko Adventures | A vertically readable display concept that expands the collectible world without being confused for an active storefront or shop listing. | CONCEPTUAL BRAND REFERENCE. Contains generated/mockup copy and must be replaced with cleared packaging art before merchandise claims. |
+
+### Phase 5C asset-first derivatives
+
+These derivatives were generated from the supplied Maneki concepts or created as new conceptual prototype artwork to solve the rejected photographic-background problem. They are intentionally not labeled as approved product photography.
+
+| Source / method | Optimized derivative | Section | Selection rationale | Status / replacement requirement |
+|---|---|---|---|---|
+| Existing `hero-matcha-concept.webp`, edited with the built-in image tool | `public/images/maneki/hero-matcha-cutout.webp` (1024×1536, transparent WebP) | Hero and Featured Matcha | Removes the hand and baked white field so the can can sit inside a layered campaign composition. | CONCEPTUAL BRAND REFERENCE. Verify label, packaging, and commercial clearance before launch. |
+| Existing `seasonal-pink-drink-concept.webp`, edited with the built-in image tool | `public/images/maneki/seasonal-pink-cutout.webp` (1159×1356, transparent WebP) | Featured seasonal beverage | Provides a clean pink beverage silhouette without presenting the reference café background as a Maneki location. | CONCEPTUAL BRAND REFERENCE. Replace with approved seasonal photography/artwork before public availability claims. |
+| New conceptual beverage artwork generated with the built-in image tool | `public/images/maneki/coffee-concept-cutout.webp` (1024×1536, transparent WebP) | Featured coffee beverage | Supplies the third distinct beverage state required for a coherent drink selector; no suitable coffee product photo was present. | GENERATED CONCEPTUAL ARTWORK. Not an approved product image or launch commitment. |
+
+### Excluded from prototype integration
+
+Storefronts, coffee trailers, interiors, uniforms, signage, third-party café photography, and architectural references remain excluded. They could imply an existing Maneki location or carry rights limitations. The product menu also remains family-level and typography-led because no remaining reference can be matched confidently to the documented 39 entries without misrepresenting the product.
 
 ## Reference inventory
 

@@ -4,6 +4,20 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
+// GSAP's responsive matchMedia registry needs the browser API in jsdom.
+if (!window.matchMedia) {
+  window.matchMedia = (query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener() {},
+    removeListener() {},
+    addEventListener() {},
+    removeEventListener() {},
+    dispatchEvent() { return false; },
+  });
+}
+
 // jsdom does not implement the browser observer used by Framer Motion's
 // whileInView features. Report observed elements as visible for component tests.
 class TestIntersectionObserver {

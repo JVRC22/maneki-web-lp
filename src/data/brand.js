@@ -2,17 +2,18 @@ export const brand = {
   name: 'MANEKI',
   primaryTagline: 'Asia interpretada por México',
   secondaryTagline: 'El gato te trae suerte',
-  description: 'Bebidas y comida de inspiración asiática, interpretadas con sabores familiares y el sello de México.',
+  description: 'Café de bebidas y comida de inspiración asiática, interpretadas con sabores familiares y el sello de México.',
   story: 'México siempre ha sabido interpretar el mundo. Maneki nace de esa curiosidad: tomamos sabores y formatos que nos inspiran de Asia, los acercamos al paladar local y los convertimos en una experiencia propia.',
   mission: 'Crear bebidas y alimentos de inspiración asiática que sean frescos, accesibles, portátiles y fáciles de descubrir.',
   vision: 'Construir una marca gastronómica cercana y memorable para Torreón, donde cada visita sea una invitación a probar algo nuevo.',
 };
 
 export const navLinks = [
+  { label: 'Inicio', href: '#inicio' },
   { label: 'Menú', href: '#menu' },
-  { label: 'Colecciones', href: '#colecciones' },
+  { label: 'Nuestra historia', href: '#historia' },
   { label: 'Neko Neko', href: '#neko-neko' },
-  { label: 'Maneki Mini', href: '#maneki-mini' },
+  { label: 'Colecciones', href: '#colecciones' },
 ];
 
 export const publicConfig = {
@@ -47,8 +48,8 @@ export const nekoNeko = {
 };
 
 export const manekiMini = {
-  title: '¿Te gustaría ver Maneki en tu universidad?',
-  description: 'Maneki Mini es una propuesta de punto de venta universitario con un menú reducido y portátil. La idea está en evaluación.',
+  title: 'Maneki Mini',
+  description: '¿Te gustaría ver Maneki en tu universidad? Es una propuesta de punto de venta universitario con un menú reducido y portátil. La idea está en evaluación.',
   status: 'PROPOSED',
   contactAvailable: false,
 };

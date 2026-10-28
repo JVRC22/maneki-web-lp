@@ -1,6 +1,41 @@
+const familyById = {
+  'kohi-rocks': 'Café frío',
+  'tokyo-frappe': 'Café frío',
+  'yume-latte': 'Café frío',
+  'matcha-kiss': 'Matcha frío',
+  'midori-cloud': 'Matcha frío',
+  'hanami-dream': 'Matcha frío',
+  'zen-citrus': 'Refreshers asiáticos',
+  'kuro-berry': 'Refreshers asiáticos',
+  'yuzu-bloom': 'Refreshers asiáticos',
+  'limon-neko': 'Limonadas minerales',
+  'maneki-lime': 'Limonadas minerales',
+  'yuzu-breeze': 'Limonadas minerales',
+  'bubble-pop': 'Bubble tea',
+  'kohi-americano': 'Café caliente',
+  'kohi-latte': 'Café caliente',
+  'dalgona-warm': 'Café caliente',
+  'ocha-classic': 'Tés calientes',
+  'ocha-bloom': 'Tés calientes',
+  'matcha-cloud': 'Tés calientes',
+  'onigiri-crunch': 'Onigiri empanizado',
+  'onigiri-ocean': 'Onigiri empanizado',
+  'onigiri-teri': 'Onigiri empanizado',
+  'pancake-neko': 'Pancakes',
+  'pancake-fruity': 'Pancakes',
+  'pancake-dream': 'Pancakes',
+  'mantou-cloud': 'Mantou dulces',
+  'mantou-choco': 'Mantou dulces',
+  'mantou-crunch': 'Mantou dulces',
+  'sando-cloud': 'Creamy sando',
+  'sando-choco': 'Creamy sando',
+  'sando-biscoff': 'Creamy sando',
+};
+
 const product = (id, category, name, flavors, level, documentedPrice, description) => ({
   id,
   category,
+  family: familyById[id] || category,
   name,
   flavors,
   level,
@@ -61,25 +96,37 @@ export const menuItems = [
 ];
 
 export const menuExtras = [
-  { id: 'cloud-foam', category: 'extras', name: 'Cloud Foam', description: 'Foam opcional para personalizar tu bebida.', options: ['Vainilla', 'Cajeta', 'Lechera', 'Plátano', 'Fresa', 'Biscoff', 'Nutella', 'Oreo', 'Mazapán', 'Pistache'], documentedPrice: '+$10–12', publicPrice: null, priceStatus: 'PROPOSED', type: 'extra' },
-  { id: 'pop-pearls', category: 'extras', name: 'Pop Pearls', description: 'Bolitas que explotan como adicional.', options: [], documentedPrice: '+$10', publicPrice: null, priceStatus: 'PROPOSED', type: 'extra' },
-  { id: 'bubble-tapioca', category: 'extras', name: 'Bubble Tapioca', description: 'Tapioca como adicional.', options: [], documentedPrice: '+$10', publicPrice: null, priceStatus: 'PROPOSED', type: 'extra' },
+  { id: 'cloud-foam', category: 'extras', family: 'Extras', name: 'Cloud Foam', description: 'Foam opcional para personalizar tu bebida.', options: ['Vainilla', 'Cajeta', 'Lechera', 'Plátano', 'Fresa', 'Biscoff', 'Nutella', 'Oreo', 'Mazapán', 'Pistache'], documentedPrice: '+$10–12', publicPrice: null, priceStatus: 'PROPOSED', type: 'extra' },
+  { id: 'pop-pearls', category: 'extras', family: 'Extras', name: 'Pop Pearls', description: 'Bolitas que explotan como adicional.', options: [], documentedPrice: '+$10', publicPrice: null, priceStatus: 'PROPOSED', type: 'extra' },
+  { id: 'bubble-tapioca', category: 'extras', family: 'Extras', name: 'Bubble Tapioca', description: 'Tapioca como adicional.', options: [], documentedPrice: '+$10', publicPrice: null, priceStatus: 'PROPOSED', type: 'extra' },
 ];
 
 export const menuCombos = [
-  { id: 'combo-neko', category: 'combos', name: 'Combo Neko', description: '1 bebida fría + 1 onigiri.', documentedPrice: '$160', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
-  { id: 'combo-maneki', category: 'combos', name: 'Combo Maneki', description: '1 bebida fría + 1 postre.', documentedPrice: '$130', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
-  { id: 'combo-yume', category: 'combos', name: 'Combo Yume', description: '2 postres + 2 bebidas.', documentedPrice: '$220', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
-  { id: 'combo-matcha-lover', category: 'combos', name: 'Combo Matcha Lover', description: 'Matcha Kiss + Matcha Cloud.', documentedPrice: '$150', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
-  { id: 'combo-onigiri-bebida', category: 'combos', name: 'Combo Onigiri + Bebida', description: 'Onigiri Crunch + bebida fría.', documentedPrice: '$160', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
+  { id: 'combo-neko', category: 'combos', family: 'Combos', name: 'Combo Neko', description: '1 bebida fría + 1 onigiri.', documentedPrice: '$160', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
+  { id: 'combo-maneki', category: 'combos', family: 'Combos', name: 'Combo Maneki', description: '1 bebida fría + 1 postre.', documentedPrice: '$130', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
+  { id: 'combo-yume', category: 'combos', family: 'Combos', name: 'Combo Yume', description: '2 postres + 2 bebidas.', documentedPrice: '$220', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
+  { id: 'combo-matcha-lover', category: 'combos', family: 'Combos', name: 'Combo Matcha Lover', description: 'Matcha Kiss + Matcha Cloud.', documentedPrice: '$150', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
+  { id: 'combo-onigiri-bebida', category: 'combos', family: 'Combos', name: 'Combo Onigiri + Bebida', description: 'Onigiri Crunch + bebida fría.', documentedPrice: '$160', publicPrice: null, priceStatus: 'PROPOSED', type: 'combo' },
 ];
 
 export const allMenuItems = [...menuItems, ...menuExtras, ...menuCombos];
+
+const starterMenuItemIds = [
+  'kohi-rocks',
+  'matcha-kiss',
+  'zen-citrus',
+  'onigiri-crunch',
+  'pancake-neko',
+  'sando-cloud',
+];
+
+export const starterMenuItems = starterMenuItemIds.map((id) => allMenuItems.find((item) => item.id === id));
 
 export const menuMeta = {
   documentedProductCount: 31,
   extraCount: menuExtras.length,
   comboCount: menuCombos.length,
+  starterCount: starterMenuItems.length,
   documentedBaseVariantCount: 60,
   publicPriceStatus: 'PENDING_APPROVAL',
 };
