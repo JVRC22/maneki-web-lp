@@ -23,7 +23,6 @@ export default function ManekiMiniSection() {
               height={brandAssets.manekiMiniIllustration.height}
               loading="lazy"
             />
-            <figcaption>Ilustración conceptual de formato móvil · no es una sucursal activa.</figcaption>
           </figure>
           <div className="phase5g-mini-copy">
             <span className="phase5e2-mini-campus" aria-hidden="true">CAMPUS</span>
