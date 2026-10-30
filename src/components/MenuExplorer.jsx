@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { allMenuItems, menuCategories, starterMenuItems } from '../data/menu';
-import { menuPhotoAssets, visualAssets } from '../data/assets';
+import { menuPhotoAssets } from '../data/assets';
 import { gsap, prefersReducedMotion, useGSAP } from '../motion/gsap';
 
 const discoveryAnchors = [
@@ -29,7 +29,7 @@ const discoveryAnchors = [
     title: 'Un color nuevo.',
     copy: 'Una bebida conceptual para imaginar la siguiente temporada.',
     tone: 'pink',
-    image: visualAssets.seasonalCutout,
+    image: menuPhotoAssets['hanami-dream'],
   },
   {
     id: 'food-anchor',
@@ -186,7 +186,7 @@ export default function MenuExplorer() {
           </div>
         </div>
 
-        <div className="phase5e-discovery phase5l-discovery" aria-labelledby="discovery-title">
+        <div className="phase5e-discovery phase5l-discovery" aria-labelledby="discovery-title" data-testid="menu-discovery">
           <div className="phase5e-subheading phase5l-discovery-heading">
             <p className="phase5e-label">Para empezar</p>
             <h3 id="discovery-title">Encuentra tu primer antojo.</h3>

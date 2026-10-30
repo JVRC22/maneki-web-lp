@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const initialErrors = {};
 
@@ -16,7 +16,14 @@ function validate(values) {
 export default function ContactDemoForm() {
   const [errors, setErrors] = useState(initialErrors);
   const [submitted, setSubmitted] = useState(false);
+  const [reason, setReason] = useState('');
   const summaryRef = useRef(null);
+
+  useEffect(() => {
+    const handleMiniContact = (event) => setReason(event.detail === 'mini' ? 'mini' : '');
+    window.addEventListener('maneki-contact-reason', handleMiniContact);
+    return () => window.removeEventListener('maneki-contact-reason', handleMiniContact);
+  }, []);
 
   const clearSubmission = () => {
     if (submitted) setSubmitted(false);
@@ -37,6 +44,7 @@ export default function ContactDemoForm() {
     }
 
     form.reset();
+    setReason('');
     setSubmitted(true);
   };
 
@@ -44,8 +52,8 @@ export default function ContactDemoForm() {
     <section className="phase5j-contact-demo" id="contacto" aria-labelledby="contacto-title">
       <div className="phase5j-contact-intro">
         <h3 id="contacto-title">Hablemos de ideas nuevas.</h3>
-        <p>Formulario de demostración para explorar preguntas, Maneki Mini y colaboraciones.</p>
-        <small>No guarda ni envía información a ningún destinatario.</small>
+        <p>¿Tienes una pregunta, una propuesta para Maneki Mini o una idea para colaborar? Cuéntanos.</p>
+        <small>Contacto de demostración: no guarda ni envía información a ningún destinatario.</small>
       </div>
       <form className="phase5j-contact-form" noValidate onSubmit={handleSubmit}>
         {Object.keys(errors).length > 0 && (
@@ -61,27 +69,29 @@ export default function ContactDemoForm() {
         <div className="phase5j-contact-fields">
           <label htmlFor="contact-name">
             <span>Nombre</span>
-            <input id="contact-name" name="name" type="text" autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? 'contact-name-error' : undefined} onChange={clearSubmission} />
+            <input id="contact-name" name="name" type="text" autoComplete="name" placeholder="¿Cómo te llamas?" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? 'contact-name-error' : undefined} onChange={clearSubmission} />
             {errors.name && <small id="contact-name-error">{errors.name}</small>}
           </label>
           <label htmlFor="contact-email">
             <span>Correo electrónico</span>
-            <input id="contact-email" name="email" type="email" autoComplete="email" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? 'contact-email-error' : undefined} onChange={clearSubmission} />
+            <input id="contact-email" name="email" type="email" autoComplete="email" placeholder="tu-correo@ejemplo.com" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? 'contact-email-error' : undefined} onChange={clearSubmission} />
             {errors.email && <small id="contact-email-error">{errors.email}</small>}
           </label>
           <label htmlFor="contact-reason">
             <span>Motivo de contacto</span>
-            <select id="contact-reason" name="reason" defaultValue="" aria-invalid={Boolean(errors.reason)} aria-describedby={errors.reason ? 'contact-reason-error' : undefined} onChange={clearSubmission}>
-              <option value="" disabled>Elige una opción</option>
-              <option value="general">Información general</option>
-              <option value="mini">Maneki Mini / universidades</option>
+            <select id="contact-reason" name="reason" value={reason} aria-invalid={Boolean(errors.reason)} aria-describedby={errors.reason ? 'contact-reason-error' : undefined} onChange={(event) => { setReason(event.target.value); clearSubmission(); }}>
+              <option value="" disabled>Selecciona el motivo</option>
+              <option value="general">Pregunta general</option>
+              <option value="mini">Maneki Mini / Universidad</option>
               <option value="collab">Colaboraciones</option>
+              <option value="events">Eventos</option>
+              <option value="other">Otra propuesta</option>
             </select>
             {errors.reason && <small id="contact-reason-error">{errors.reason}</small>}
           </label>
           <label className="phase5j-contact-message" htmlFor="contact-message">
             <span>Mensaje</span>
-            <textarea id="contact-message" name="message" rows="4" aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? 'contact-message-error' : undefined} onChange={clearSubmission} />
+            <textarea id="contact-message" name="message" rows="4" placeholder="Cuéntanos un poco sobre tu idea..." aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? 'contact-message-error' : undefined} onChange={clearSubmission} />
             {errors.message && <small id="contact-message-error">{errors.message}</small>}
           </label>
         </div>

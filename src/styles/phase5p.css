@@ -1,0 +1,643 @@
+/* Phase 5P: story, character, campus, community, and contact presentation. */
+
+.phase5p-story-intro {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+  gap: clamp(28px, 7vw, 110px);
+  align-items: end;
+}
+
+.phase5p-story-intro h2 {
+  max-width: 8ch !important;
+  font-size: clamp(3.8rem, 7.4vw, 8.2rem) !important;
+}
+
+.phase5p-story-intro > p {
+  max-width: 38ch;
+  margin: 0;
+  color: rgba(246, 241, 231, 0.88);
+  font-size: clamp(1rem, 0.94rem + 0.22vw, 1.15rem);
+  line-height: 1.55;
+}
+
+.phase5p-story-grid {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: stretch;
+}
+
+.phase5p-story-scene {
+  grid-column: auto;
+  min-height: clamp(520px, 48vw, 680px);
+  overflow: hidden;
+  background: var(--olive);
+}
+
+.phase5p-story-scene .phase5e2-story-field {
+  right: 7%;
+  bottom: 5%;
+  left: 7%;
+  background: var(--burgundy);
+  border-radius: 48% 52% 42% 58%;
+  transform: rotate(-6deg);
+}
+
+.phase5p-story-scene .phase5e2-story-product {
+  right: 13%;
+  bottom: -2%;
+  width: 47%;
+  height: 86%;
+}
+
+.phase5p-story-scene .phase5e2-story-word-asia {
+  top: 9%;
+  left: 8%;
+  color: var(--pink-fill);
+}
+
+.phase5p-story-scene .phase5e2-story-word-mexico {
+  right: 8%;
+  bottom: 8%;
+  color: var(--ground);
+}
+
+.phase5p-story-scene .phase5e2-story-cross {
+  top: 45%;
+  left: 48%;
+  color: var(--ground);
+}
+
+.phase5p-story-principles {
+  display: grid;
+  grid-template-rows: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 18px;
+}
+
+.phase5p-story-principle {
+  position: relative;
+  min-width: 0;
+  padding: clamp(26px, 4vw, 48px);
+  color: var(--ground);
+  overflow: hidden;
+}
+
+.phase5p-story-principle-mission {
+  background: var(--olive);
+}
+
+.phase5p-story-principle-vision {
+  background: var(--burgundy);
+}
+
+.phase5p-story-principle h3 {
+  position: relative;
+  z-index: 1;
+  color: var(--pink-fill);
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 3.3vw, 4rem);
+  line-height: 0.86;
+}
+
+.phase5p-story-principle strong {
+  position: relative;
+  z-index: 1;
+  display: block;
+  max-width: 20ch;
+  margin-top: 24px;
+  color: var(--ground);
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.6vw, 1.7rem);
+  line-height: 1.02;
+}
+
+.phase5p-story-principle p {
+  position: relative;
+  z-index: 1;
+  max-width: 55ch;
+  margin-top: 22px;
+  color: rgba(246, 241, 231, 0.9);
+  font-size: 0.96rem;
+  line-height: 1.52;
+}
+
+.phase5p-story-year {
+  position: absolute;
+  right: -0.04em;
+  bottom: -0.14em;
+  color: rgba(221, 167, 184, 0.25);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 13vw, 15rem);
+  line-height: 0.72;
+  letter-spacing: -0.1em;
+}
+
+.phase5p-neko .phase5e2-neko-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(360px, 1.18fr);
+  gap: clamp(28px, 6vw, 100px);
+  align-items: center;
+}
+
+.phase5p-neko .phase5e2-neko-copy {
+  grid-column: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.phase5p-neko .phase5e2-neko-copy h2 {
+  max-width: 8ch !important;
+  font-size: clamp(3.5rem, 6.3vw, 7.4rem) !important;
+}
+
+.phase5p-neko-lead {
+  max-width: 34ch;
+  margin: 30px 0 42px;
+  color: var(--ground);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 1.8vw, 1.9rem);
+  line-height: 1.02;
+}
+
+.phase5p-neko .phase5e2-neko-explanation {
+  max-width: 42ch;
+  margin-top: 24px;
+  padding-top: 22px;
+  background: transparent;
+}
+
+.phase5p-neko .phase5e2-neko-explanation h3 {
+  max-width: 24ch;
+  color: var(--pink-fill);
+  font-size: clamp(1.25rem, 1.7vw, 1.7rem);
+  line-height: 1.05;
+}
+
+.phase5p-neko .phase5e2-neko-explanation p {
+  max-width: 42ch;
+  margin-top: 10px;
+  color: rgba(246, 241, 231, 0.86);
+  font-size: 1rem;
+  line-height: 1.52;
+}
+
+.phase5p-neko-stage {
+  grid-column: auto;
+  min-height: clamp(560px, 52vw, 720px);
+  background: var(--ground);
+  isolation: isolate;
+}
+
+.phase5p-neko-stage .phase5e2-neko-stage-field {
+  top: 10%;
+  right: 9%;
+  bottom: 9%;
+  left: 9%;
+  background: var(--pink-fill);
+  border-radius: 46% 54% 52% 48%;
+  transform: rotate(7deg);
+}
+
+.phase5p-neko-stage .phase5e2-neko-stage-word {
+  top: 4%;
+  left: 6%;
+  color: var(--burgundy);
+  font-size: clamp(4.4rem, 8vw, 9rem);
+}
+
+.phase5p-neko-stage .phase5e2-neko-figure {
+  top: 12%;
+  right: 16%;
+  bottom: 12%;
+  left: 16%;
+}
+
+.phase5p-neko-idle {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  transform-origin: 50% 84%;
+}
+
+.phase5p-neko-stage .phase5e2-neko-art img {
+  width: 100%;
+  height: 100%;
+}
+
+.phase5p-neko-stage .phase5e2-neko-figure figcaption {
+  right: -8%;
+  bottom: 5%;
+  max-width: 20ch;
+}
+
+.phase5p-neko-accent {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: var(--burgundy);
+  border-radius: 50%;
+}
+
+.phase5p-neko-accent-one {
+  top: 23%;
+  right: 10%;
+}
+
+.phase5p-neko-accent-two {
+  bottom: 22%;
+  left: 12%;
+  width: 14px;
+  height: 14px;
+  background: var(--olive);
+}
+
+.phase5p-mini {
+  padding-block: clamp(92px, 10vw, 144px);
+}
+
+.phase5p-mini-heading h2 {
+  max-width: 7ch !important;
+  font-size: clamp(4rem, 8vw, 9rem) !important;
+}
+
+.phase5p-mini-heading p {
+  max-width: 34ch;
+}
+
+.phase5p-mini-invite {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  min-height: 560px;
+  align-items: stretch;
+  padding: 0;
+  overflow: hidden;
+  background: var(--ground);
+}
+
+.phase5p-mini-invite .phase5g-mini-media {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  margin: 0;
+  padding: clamp(18px, 3vw, 36px);
+  background: var(--olive);
+}
+
+.phase5p-mini-invite .phase5g-mini-media img {
+  object-fit: contain;
+}
+
+.phase5p-mini-invite .phase5g-mini-media figcaption {
+  right: 18px;
+  bottom: 18px;
+  max-width: 25ch;
+}
+
+.phase5p-mini-copy {
+  align-self: center;
+  padding: clamp(28px, 4vw, 58px);
+}
+
+.phase5p-mini-copy h3,
+.phase5p-mini-invite h3 {
+  max-width: 13ch;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 3.5vw, 4.2rem);
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+}
+
+.phase5p-mini-invite .phase5e2-mini-campus {
+  margin-bottom: 22px;
+  color: var(--burgundy);
+  text-align: left;
+  transform: rotate(-4deg);
+}
+
+.phase5p-mini-invite .phase5g-mini-copy > p {
+  max-width: 35ch;
+  margin-top: 24px;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.phase5p-mini-example {
+  display: grid;
+  gap: 10px;
+  margin-top: 26px;
+  padding: 16px;
+  color: var(--ink);
+  background: var(--soft-ground);
+}
+
+.phase5p-mini-example > span {
+  color: var(--burgundy);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.phase5p-mini-example div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  justify-content: space-between;
+}
+
+.phase5p-mini-example small {
+  color: rgba(30, 29, 26, 0.7);
+  font-size: 0.8rem;
+}
+
+.phase5p-mini-example strong {
+  font-size: 0.92rem;
+}
+
+.phase5p-mini-cta {
+  display: inline-flex;
+  margin-top: 24px;
+  color: var(--ground);
+  background: var(--burgundy);
+}
+
+.phase5p-community .phase5e2-community-close {
+  overflow: visible;
+}
+
+.phase5p-polaroids {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.88fr) minmax(0, 0.88fr);
+  gap: clamp(12px, 2vw, 24px);
+  align-items: start;
+}
+
+.phase5p-polaroids .phase5p-polaroid {
+  min-width: 0;
+  padding: 12px 12px 18px;
+  overflow: hidden;
+  background: var(--ground);
+  transform-origin: 50% 100%;
+  transition: transform 220ms var(--ease-editorial);
+}
+
+.phase5p-polaroid-front { transform: rotate(-3deg); }
+.phase5p-polaroid-back { margin-top: 24px; transform: rotate(3deg); }
+.phase5p-polaroid-card { transform: rotate(-1deg); }
+
+.phase5p-polaroids .phase5p-polaroid:hover,
+.phase5p-polaroids .phase5p-polaroid:focus-within {
+  z-index: 2;
+  transform: translateY(-6px) rotate(0deg);
+}
+
+.phase5p-polaroid img {
+  display: block;
+  width: 100%;
+  height: clamp(150px, 16vw, 240px);
+  object-fit: contain;
+  background: var(--soft-ground);
+}
+
+.phase5p-polaroid figcaption {
+  min-height: 48px;
+  padding: 12px 4px 0;
+  color: var(--ink);
+  background: var(--ground);
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.phase5p-community .phase5e2-community-actions {
+  margin-top: 46px;
+}
+
+.phase5p-community .phase5j-contact-demo {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.phase5p-community .phase5j-contact-demo::after {
+  position: absolute;
+  right: -8%;
+  bottom: -45%;
+  width: 320px;
+  height: 320px;
+  content: '';
+  background: var(--burgundy);
+  border-radius: 50%;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.phase5p-community .phase5j-contact-demo > * {
+  position: relative;
+  z-index: 1;
+}
+
+.phase5p-community .phase5j-contact-intro h3 {
+  max-width: 9ch;
+}
+
+.phase5p-community .phase5j-contact-fields input::placeholder,
+.phase5p-community .phase5j-contact-fields textarea::placeholder {
+  color: rgba(30, 29, 26, 0.58);
+  opacity: 1;
+}
+
+.phase5p-community .phase5j-contact-fields input:hover,
+.phase5p-community .phase5j-contact-fields select:hover,
+.phase5p-community .phase5j-contact-fields textarea:hover {
+  border-color: rgba(120, 47, 54, 0.44);
+}
+
+@media (max-width: 1024px) {
+  .phase5p-story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .phase5p-story-scene {
+    min-height: 500px;
+  }
+
+  .phase5p-story-principles {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    grid-template-rows: none;
+  }
+
+  .phase5p-neko .phase5e2-neko-shell {
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: 32px;
+  }
+
+  .phase5p-mini-invite {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  }
+
+  .phase5p-polaroids {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .phase5p-story-intro,
+  .phase5p-story-grid,
+  .phase5p-neko .phase5e2-neko-shell,
+  .phase5p-mini-invite {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phase5p-story-intro {
+    gap: 22px;
+  }
+
+  .phase5p-story-intro h2 {
+    font-size: clamp(3.1rem, 13vw, 5rem) !important;
+  }
+
+  .phase5p-story-grid {
+    gap: 28px;
+  }
+
+  .phase5p-story-scene {
+    min-height: 430px;
+  }
+
+  .phase5p-story-scene .phase5e2-story-product {
+    right: 13%;
+    width: 55%;
+    height: 84%;
+  }
+
+  .phase5p-story-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .phase5p-story-principle {
+    padding: 28px 24px;
+  }
+
+  .phase5p-story-principle p {
+    font-size: 0.95rem;
+  }
+
+  .phase5p-neko .phase5e2-neko-shell {
+    gap: 34px;
+  }
+
+  .phase5p-neko-copy h2 {
+    font-size: clamp(3.1rem, 13vw, 5rem) !important;
+  }
+
+  .phase5p-neko-lead {
+    margin: 24px 0 32px;
+    font-size: 1.3rem;
+  }
+
+  .phase5p-neko-stage {
+    min-height: 500px;
+    order: -1;
+  }
+
+  .phase5p-neko-stage .phase5e2-neko-figure {
+    top: 13%;
+    right: 16%;
+    bottom: 12%;
+    left: 16%;
+  }
+
+  .phase5p-neko-stage .phase5e2-neko-figure figcaption {
+    right: -4%;
+    bottom: 3%;
+  }
+
+  .phase5p-mini-heading h2 {
+    font-size: clamp(4rem, 18vw, 6.4rem) !important;
+  }
+
+  .phase5p-mini-invite {
+    min-height: 0;
+  }
+
+  .phase5p-mini-invite .phase5g-mini-media {
+    min-height: 270px;
+    height: 270px;
+  }
+
+  .phase5p-mini-copy {
+    padding: 30px 24px 34px;
+  }
+
+  .phase5p-mini-invite h3 {
+    font-size: clamp(2.3rem, 9.5vw, 3.6rem);
+  }
+
+  .phase5p-polaroids {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .phase5p-polaroid-back {
+    margin-top: 20px;
+  }
+
+  .phase5p-polaroid-card {
+    grid-column: 1 / -1;
+    width: min(70%, 250px);
+    justify-self: center;
+    margin-top: 8px;
+  }
+
+  .phase5p-polaroid img {
+    height: 150px;
+  }
+
+  .phase5p-polaroid-card img {
+    height: 190px;
+  }
+
+  .phase5p-community .phase5j-contact-demo {
+    padding: 34px 24px;
+  }
+}
+
+@media (max-width: 380px) {
+  .phase5p-story-scene {
+    min-height: 380px;
+  }
+
+  .phase5p-neko-stage {
+    min-height: 470px;
+  }
+
+  .phase5p-polaroid img {
+    height: 132px;
+  }
+
+  .phase5p-polaroid-card img {
+    height: 172px;
+  }
+
+  .phase5p-polaroid figcaption {
+    min-height: 60px;
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase5p-polaroids .phase5p-polaroid {
+    transition: none;
+    transform: none;
+  }
+}

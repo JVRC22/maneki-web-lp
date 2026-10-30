@@ -16,27 +16,28 @@ export default function CommunitySection() {
         <motion.div className="phase5e2-community-close" {...reveal(0.1)}>
           <span className="phase5e2-community-wordmark">MANEKI</span>
           <p>Asia interpretada por México.</p>
-          <div className="phase5g-community-art" aria-label="Conceptos visuales de comunidad y equipo Maneki">
-            <figure>
-              <div className="phase5g-uniform-pair">
-                <img
-                  src={brandAssets.uniformFront.src}
-                  alt={brandAssets.uniformFront.alt}
-                  width={brandAssets.uniformFront.width}
-                  height={brandAssets.uniformFront.height}
-                  loading="lazy"
-                />
-                <img
-                  src={brandAssets.uniformBack.src}
-                  alt={brandAssets.uniformBack.alt}
-                  width={brandAssets.uniformBack.width}
-                  height={brandAssets.uniformBack.height}
-                  loading="lazy"
-                />
-              </div>
-              <figcaption>Uniforme conceptual · identidad visual, no mercancía disponible.</figcaption>
+          <div className="phase5g-community-art phase5p-polaroids" aria-label="Conceptos visuales de comunidad y equipo Maneki">
+            <figure className="phase5p-polaroid phase5p-polaroid-front">
+              <img
+                src={brandAssets.uniformFront.src}
+                alt={brandAssets.uniformFront.alt}
+                width={brandAssets.uniformFront.width}
+                height={brandAssets.uniformFront.height}
+                loading="lazy"
+              />
+              <figcaption>Así se viste Maneki · uniforme conceptual.</figcaption>
             </figure>
-            <figure>
+            <figure className="phase5p-polaroid phase5p-polaroid-back">
+              <img
+                src={brandAssets.uniformBack.src}
+                alt={brandAssets.uniformBack.alt}
+                width={brandAssets.uniformBack.width}
+                height={brandAssets.uniformBack.height}
+                loading="lazy"
+              />
+              <figcaption>Una identidad que también se mueve.</figcaption>
+            </figure>
+            <figure className="phase5p-polaroid phase5p-polaroid-card">
               <img
                 src={brandAssets.loyaltyCard.src}
                 alt={brandAssets.loyaltyCard.alt}
@@ -44,7 +45,7 @@ export default function CommunitySection() {
                 height={brandAssets.loyaltyCard.height}
                 loading="lazy"
               />
-              <figcaption>Una idea para nuestra comunidad · programa no activo.</figcaption>
+              <figcaption>Maneki también se colecciona · programa no activo.</figcaption>
             </figure>
           </div>
           <div className="phase5e2-community-actions">

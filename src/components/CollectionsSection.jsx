@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { collections } from '../data/brand';
-import { brandAssets, visualAssets } from '../data/assets';
+import { brandAssets, menuPhotoAssets } from '../data/assets';
 import { motion, useEditorialReveal } from './EditorialReveal';
 import { gsap, prefersReducedMotion, useGSAP } from '../motion/gsap';
 
@@ -15,9 +15,9 @@ export default function CollectionsSection() {
     const mediaQueries = gsap.matchMedia();
     mediaQueries.add('(min-width: 769px)', () => {
       gsap.fromTo('.phase5d-seasonal-image',
-        { transform: 'translate3d(0, 3%, 0) scale(1.04)' },
+        { transform: 'translate3d(0, 1%, 0)' },
         {
-          transform: 'translate3d(0, -5%, 0) scale(1.1)',
+          transform: 'translate3d(0, -1%, 0)',
           ease: 'none',
           scrollTrigger: {
             trigger: '.phase5d-seasonal-media',
@@ -31,9 +31,9 @@ export default function CollectionsSection() {
     });
     mediaQueries.add('(max-width: 768px)', () => {
       gsap.fromTo('.phase5d-seasonal-image',
-        { transform: 'translate3d(0, 2%, 0) scale(1.02)' },
+        { transform: 'translate3d(0, 1%, 0)' },
         {
-          transform: 'translate3d(0, -2%, 0) scale(1.05)',
+          transform: 'translate3d(0, -1%, 0)',
           ease: 'none',
           scrollTrigger: {
             trigger: '.phase5d-seasonal-media',
@@ -54,6 +54,29 @@ export default function CollectionsSection() {
         toggleActions: 'play none none reverse',
       },
     });
+    const collectibleIdleTweens = [];
+    const stopCollectibleIdle = () => {
+      collectibleIdleTweens.splice(0).forEach((tween) => tween.kill());
+    };
+    const startCollectibleIdle = () => {
+      stopCollectibleIdle();
+      [
+        ['.phase5g-collectible-box', isMobile ? 3 : 5, 1.5, 0],
+        ['.phase5g-collectible-black', isMobile ? -3 : -5, -1.2, 0.12],
+        ['.phase5g-collectible-glasses', isMobile ? 2 : 4, 1, 0.2],
+        ['.phase5g-collectible-pink', isMobile ? -2 : -4, 1.4, 0.28],
+      ].forEach(([selector, distance, rotation, delay]) => {
+        collectibleIdleTweens.push(gsap.to(selector, {
+          y: distance,
+          rotation,
+          duration: 5.8 + delay,
+          delay,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+        }));
+      });
+    };
 
     collectibleScene
       .fromTo('.phase5g-collectible-box',
@@ -76,7 +99,11 @@ export default function CollectionsSection() {
         '-=0.42'
       );
 
+    collectibleScene.eventCallback('onComplete', startCollectibleIdle);
+    collectibleScene.eventCallback('onReverseComplete', stopCollectibleIdle);
+
     return () => {
+      stopCollectibleIdle();
       mediaQueries.revert();
       collectibleScene.kill();
     };
@@ -103,10 +130,10 @@ export default function CollectionsSection() {
             <div className="phase3-collection-media phase3-collection-media-seasonal phase5d-seasonal-media phase5e-seasonal-media">
               <img
                 className="phase5d-seasonal-image phase5e-seasonal-image"
-                src={visualAssets.seasonalCutout.src}
-                alt={visualAssets.seasonalCutout.alt}
-                width={visualAssets.seasonalCutout.width}
-                height={visualAssets.seasonalCutout.height}
+                src={menuPhotoAssets['hanami-dream'].src}
+                alt={menuPhotoAssets['hanami-dream'].alt}
+                width={menuPhotoAssets['hanami-dream'].width}
+                height={menuPhotoAssets['hanami-dream'].height}
                 loading="lazy"
               />
             </div>

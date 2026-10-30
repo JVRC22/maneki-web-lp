@@ -1306,6 +1306,615 @@ p {
   }
 }
 
+/* Phase 5M: botanical hero and an image-led fusion collage. */
+.phase5m-hero {
+  overflow: clip;
+}
+
+.phase5m-hero-field {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  background: var(--olive);
+  transform-origin: center;
+}
+
+.phase5m-hero-field::before,
+.phase5m-hero-field::after {
+  position: absolute;
+  display: block;
+  content: '';
+}
+
+.phase5m-hero-field::before {
+  top: -20%;
+  right: -11%;
+  width: 58vw;
+  height: 130%;
+  background: var(--burgundy);
+  border-radius: 52% 48% 42% 58%;
+  transform: rotate(-12deg);
+}
+
+.phase5m-hero-field::after {
+  right: 26%;
+  bottom: -24%;
+  width: 26vw;
+  height: 48%;
+  background: var(--pink-fill);
+  border-radius: 50% 50% 42% 58%;
+  transform: rotate(21deg);
+}
+
+.phase5m-hero-orbit {
+  position: absolute;
+  display: block;
+  border: 1px solid rgba(246, 241, 231, 0.48);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.phase5m-hero-orbit-one {
+  top: 14%;
+  right: 5%;
+  width: min(42vw, 620px);
+  aspect-ratio: 1;
+}
+
+.phase5m-hero-orbit-two {
+  right: 23%;
+  bottom: -20%;
+  width: min(26vw, 380px);
+  aspect-ratio: 1;
+  border-color: rgba(30, 29, 26, 0.28);
+}
+
+.phase5m-hero-layout {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.phase5m-hero-copy {
+  z-index: 4;
+  grid-column: 1 / span 5;
+  min-width: 0;
+}
+
+.phase5m-hero h1 {
+  max-width: 100%;
+  font-size: clamp(58px, 6.8vw, 104px);
+  line-height: 0.82;
+}
+
+.phase5m-title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.phase5m-hero-proposition {
+  max-width: 17ch;
+}
+
+.phase5m-hero-description {
+  max-width: 34ch;
+}
+
+.phase5m-hero-stage {
+  z-index: 2;
+  grid-column: 6 / -1;
+  min-height: min(900px, calc(100svh - var(--nav-height)));
+  margin-right: -4vw;
+  overflow: visible;
+}
+
+.phase5m-hero-botanical {
+  position: absolute;
+  inset: 8% 0 7%;
+}
+
+.phase5m-hero-botanical::before {
+  position: absolute;
+  top: 12%;
+  right: 16%;
+  width: 58%;
+  height: 70%;
+  border: 1px solid rgba(246, 241, 231, 0.24);
+  border-radius: 50% 44% 52% 48%;
+  content: '';
+  transform: rotate(-18deg);
+}
+
+.phase5m-hero-stem {
+  position: absolute;
+  z-index: 0;
+  bottom: 5%;
+  width: 1px;
+  height: 78%;
+  background: rgba(246, 241, 231, 0.4);
+  transform-origin: bottom center;
+}
+
+.phase5m-hero-stem::before,
+.phase5m-hero-stem::after {
+  position: absolute;
+  width: 70px;
+  height: 32px;
+  border: 1px solid rgba(246, 241, 231, 0.34);
+  border-radius: 100% 0 100% 0;
+  content: '';
+}
+
+.phase5m-hero-stem::before {
+  top: 28%;
+  left: -58px;
+  transform: rotate(-27deg);
+}
+
+.phase5m-hero-stem::after {
+  top: 48%;
+  left: -10px;
+  transform: rotate(29deg) scaleX(-1);
+}
+
+.phase5m-hero-stem-left {
+  left: 20%;
+  transform: rotate(-13deg);
+}
+
+.phase5m-hero-stem-right {
+  right: 18%;
+  height: 68%;
+  transform: rotate(18deg);
+}
+
+.phase5m-hero-can {
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  transform-origin: 50% 90%;
+}
+
+.phase5m-hero-can img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 18px rgba(30, 29, 26, 0.2)); /* taste-skill-ignore: transparent product cutouts need grounding against the editorial field. */
+}
+
+.phase5m-hero-can-left {
+  bottom: 4%;
+  left: -2%;
+  width: 40%;
+  transform: rotate(-14deg);
+}
+
+.phase5m-hero-can-center {
+  z-index: 3;
+  bottom: 0;
+  left: 22%;
+  width: 54%;
+  transform: rotate(0deg);
+}
+
+.phase5m-hero-can-right {
+  bottom: 5%;
+  right: -2%;
+  width: 40%;
+  transform: rotate(14deg);
+}
+
+.phase5m-hero-label {
+  position: absolute;
+  z-index: 4;
+  right: 7%;
+  bottom: 12%;
+  display: grid;
+  gap: 5px;
+  max-width: 22ch;
+  color: var(--ground);
+  font-size: 0.74rem;
+  line-height: 1.2;
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.phase5m-hero-label::before,
+.phase5m-hero-label::after {
+  display: block;
+}
+
+.phase5m-hero-label::before {
+  content: attr(data-products);
+}
+
+.phase5m-hero-label::after {
+  content: attr(data-note);
+  color: var(--pink-fill);
+  font-size: 0.68rem;
+}
+
+.phase5m-hero-stage figcaption {
+  right: 7%;
+  bottom: 2%;
+}
+
+.phase5m-hero-edge-note {
+  right: 4px;
+}
+
+.phase5m-fusion {
+  padding-block: clamp(88px, 10vw, 148px);
+}
+
+.phase5m-fusion-inner {
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(42px, 7vw, 120px);
+}
+
+.phase5m-fusion-intro {
+  align-self: center;
+}
+
+.phase5m-fusion-heading {
+  max-width: 8ch;
+  font-size: clamp(3.4rem, 6vw, 6.8rem);
+  line-height: 0.84;
+}
+
+.phase5m-fusion-copy {
+  max-width: 31ch;
+  margin-top: 26px;
+  line-height: 1.5;
+}
+
+.phase5m-fusion-line {
+  max-width: 27ch;
+  margin-top: 24px;
+}
+
+.phase5m-fusion-cta {
+  display: inline-flex;
+  margin-top: 30px;
+  color: var(--ground);
+  background: var(--burgundy);
+}
+
+.phase5m-fusion-stage {
+  min-height: clamp(520px, 43vw, 680px);
+  overflow: hidden;
+  background: var(--olive);
+  isolation: isolate;
+}
+
+.phase5m-fusion-stage::before,
+.phase5m-fusion-stage::after {
+  position: absolute;
+  display: block;
+  content: '';
+  pointer-events: none;
+}
+
+.phase5m-fusion-stage::before {
+  top: -8%;
+  right: -8%;
+  width: 66%;
+  height: 66%;
+  background: var(--pink-fill);
+  border-radius: 52% 48% 38% 62%;
+  transform: rotate(15deg);
+}
+
+.phase5m-fusion-stage::after {
+  bottom: -24%;
+  left: 18%;
+  width: 50%;
+  height: 42%;
+  border: 1px solid rgba(246, 241, 231, 0.42);
+  border-radius: 50%;
+  transform: rotate(-22deg);
+}
+
+.phase5m-fusion-stage .phase5j-fusion-field {
+  z-index: 0;
+  top: 18%;
+  right: auto;
+  left: 20%;
+  width: 58%;
+  height: 58%;
+  background: var(--burgundy);
+  opacity: 0.92;
+  transform: rotate(-13deg);
+}
+
+.phase5m-fusion-orbit,
+.phase5m-fusion-thread {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  pointer-events: none;
+}
+
+.phase5m-fusion-orbit {
+  border: 1px solid rgba(246, 241, 231, 0.5);
+  border-radius: 50%;
+}
+
+.phase5m-fusion-orbit-one {
+  top: 8%;
+  left: 8%;
+  width: 30%;
+  aspect-ratio: 1;
+}
+
+.phase5m-fusion-orbit-two {
+  right: 7%;
+  bottom: 10%;
+  width: 24%;
+  aspect-ratio: 1;
+  border-color: rgba(30, 29, 26, 0.32);
+}
+
+.phase5m-fusion-thread {
+  top: 8%;
+  right: 26%;
+  width: 1px;
+  height: 72%;
+  background: rgba(246, 241, 231, 0.43);
+  transform: rotate(23deg);
+  transform-origin: top center;
+}
+
+.phase5m-fusion-product {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  transform-origin: 50% 90%;
+}
+
+.phase5m-fusion-product img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 16px rgba(30, 29, 26, 0.18)); /* taste-skill-ignore: transparent product cutouts need grounding against the editorial field. */
+}
+
+.phase5m-fusion-product figcaption {
+  position: absolute;
+  bottom: 4%;
+  left: 50%;
+  padding: 7px 9px;
+  color: var(--ink);
+  background: var(--ground);
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.phase5m-fusion-matcha {
+  z-index: 4;
+  bottom: -5%;
+  left: 25%;
+  width: 35%;
+}
+
+.phase5m-fusion-coffee {
+  bottom: 7%;
+  left: 3%;
+  width: 28%;
+  transform: rotate(-12deg);
+}
+
+.phase5m-fusion-food {
+  z-index: 3;
+  right: 1%;
+  bottom: 5%;
+  width: 36%;
+  transform: rotate(7deg);
+}
+
+.phase5m-fusion-sweet {
+  top: 10%;
+  right: 25%;
+  width: 29%;
+  transform: rotate(9deg);
+}
+
+.phase5m-fusion-note {
+  z-index: 5;
+  bottom: 7%;
+  left: 7%;
+  max-width: 17ch;
+  color: var(--ground);
+}
+
+@media (max-width: 1024px) {
+  .phase5m-hero-copy {
+    grid-column: 1 / span 7;
+  }
+
+  .phase5m-hero-stage {
+    grid-column: 5 / -1;
+    margin-right: -10vw;
+  }
+
+  .phase5m-hero h1 {
+    font-size: clamp(56px, 7vw, 88px);
+  }
+
+  .phase5m-fusion-inner {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 38px;
+  }
+
+  .phase5m-fusion-heading {
+    font-size: clamp(3.2rem, 6.5vw, 5.4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .phase5m-hero {
+    min-height: auto;
+  }
+
+  .phase5m-hero-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-block: 38px 0;
+  }
+
+  .phase5m-hero-copy {
+    grid-column: 1;
+    grid-row: auto;
+    align-self: auto;
+    padding: 0 0 22px;
+  }
+
+  .phase5m-hero h1 {
+    font-size: clamp(54px, 16.4vw, 76px);
+  }
+
+  .phase5m-hero-proposition {
+    max-width: 16ch;
+    margin-top: 24px;
+    font-size: clamp(1.75rem, 7.3vw, 2.8rem);
+  }
+
+  .phase5m-hero-stage {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 454px;
+    margin: 0 -20px;
+  }
+
+  .phase5m-hero-botanical {
+    inset: 4% 0 8%;
+  }
+
+  .phase5m-hero-can-left {
+    left: -4%;
+    width: 43%;
+  }
+
+  .phase5m-hero-can-center {
+    left: 19%;
+    width: 58%;
+  }
+
+  .phase5m-hero-can-right {
+    right: -4%;
+    width: 43%;
+  }
+
+  .phase5m-hero-label {
+    right: 5%;
+    bottom: 10%;
+    max-width: 20ch;
+  }
+
+  .phase5m-hero-stage figcaption {
+    right: 5%;
+    bottom: 1%;
+  }
+
+  .phase5m-hero-edge-note {
+    top: 24px;
+    right: 0;
+  }
+
+  .phase5m-fusion {
+    padding-block: 82px 96px;
+  }
+
+  .phase5m-fusion-inner {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .phase5m-fusion-heading {
+    max-width: 7.5ch;
+    font-size: clamp(3.2rem, 14vw, 5.5rem);
+  }
+
+  .phase5m-fusion-stage {
+    min-height: 558px;
+  }
+
+  .phase5m-fusion-matcha {
+    bottom: -3%;
+    left: 22%;
+    width: 47%;
+  }
+
+  .phase5m-fusion-coffee {
+    bottom: 9%;
+    left: -1%;
+    width: 35%;
+  }
+
+  .phase5m-fusion-food {
+    right: -2%;
+    bottom: 5%;
+    width: 42%;
+  }
+
+  .phase5m-fusion-sweet {
+    top: 8%;
+    right: 22%;
+    width: 35%;
+  }
+
+  .phase5m-fusion-note {
+    bottom: 6%;
+    left: 5%;
+    max-width: 15ch;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .phase5m-hero h1 {
+    font-size: 52px;
+  }
+
+  .phase5m-hero-stage {
+    min-height: 414px;
+  }
+
+  .phase5m-hero-label {
+    font-size: 0.64rem;
+  }
+
+  .phase5m-fusion-stage {
+    min-height: 500px;
+  }
+
+  .phase5m-fusion-product figcaption {
+    padding: 5px 6px;
+    font-size: 0.58rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase5m-hero-field,
+  .phase5m-hero-can,
+  .phase5m-fusion-stage,
+  .phase5m-fusion-product,
+  .phase5m-fusion-heading,
+  .phase5m-fusion-copy,
+  .phase5m-fusion-line,
+  .phase5m-fusion-cta,
+  .phase5m-fusion-note {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* Phase 5K: corrected product photography and compact catalog presentation. */
 .phase3-menu-section .phase5e-discovery-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2745,7 +3354,6 @@ p {
     margin-left: auto !important;
   }
 }
-
 /* Phase 5L: transparent menu photography and tactile discovery stage. */
 .phase3-menu-section .phase5l-menu-intro {
   row-gap: 28px;
@@ -7143,6 +7751,641 @@ body {
 }
 
 /* Phase 5E.1 final cascade: keep the new food surfaces ahead of legacy phase rules. */
+
+/* Phase 5N: refinement pass for safe zones, collage scale, and autoplay product art. */
+.phase5n-hero .phase5n-hero-layout {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 44px);
+}
+
+.phase5n-hero .phase5n-hero-copy {
+  grid-column: 1 / span 6;
+  padding-bottom: clamp(48px, 5vw, 72px);
+}
+
+.phase5n-hero.phase5c-hero h1 {
+  max-width: 100%;
+  font-size: clamp(58px, 6.7vw, 102px);
+}
+
+.phase5n-hero .phase5n-hero-stage {
+  grid-column: 7 / -1;
+  min-height: min(900px, calc(100svh - var(--nav-height)));
+  margin-right: 0;
+}
+
+.phase5n-hero .phase5n-hero-botanical {
+  inset: 4% 0 12%;
+}
+
+.phase5n-hero .phase5m-hero-can-left {
+  bottom: 5%;
+  left: 0;
+  width: 36%;
+}
+
+.phase5n-hero .phase5m-hero-can-center {
+  bottom: 1%;
+  left: 22%;
+  width: 52%;
+}
+
+.phase5n-hero .phase5m-hero-can-right {
+  right: 0;
+  bottom: 6%;
+  width: 36%;
+}
+
+.phase5n-fusion .phase5n-fusion-inner {
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(48px, 5vw, 72px);
+}
+
+.phase5n-fusion .phase5m-fusion-intro {
+  max-width: 46ch;
+}
+
+.phase5n-fusion .phase5m-fusion-line {
+  max-width: 34ch;
+}
+
+.phase5n-fusion .phase5n-fusion-stage {
+  min-height: clamp(560px, 44vw, 700px);
+}
+
+.phase5n-fusion .phase5m-fusion-matcha {
+  bottom: 3%;
+  left: 28%;
+  width: 31%;
+}
+
+.phase5n-fusion .phase5m-fusion-coffee {
+  bottom: 12%;
+  left: 3%;
+  width: 26%;
+}
+
+.phase5n-fusion .phase5m-fusion-food {
+  right: 1%;
+  bottom: 4%;
+  width: 38%;
+}
+
+.phase5n-fusion .phase5m-fusion-sweet {
+  top: 8%;
+  right: 27%;
+  width: 30%;
+}
+
+.phase5n-fusion .phase5m-fusion-note {
+  top: 7%;
+  bottom: auto;
+  left: 6%;
+  max-width: 14ch;
+}
+
+.phase5n-featured {
+  transition: background-color 360ms var(--ease-editorial);
+}
+
+.phase5n-featured .phase5n-featured-topline {
+  align-items: end;
+}
+
+.phase5n-featured .phase5n-featured-stage {
+  min-height: clamp(560px, 50vw, 720px);
+  border-radius: 0 0 var(--phase5c-radius) 0;
+}
+
+.phase5n-featured .phase5n-featured-state {
+  grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
+}
+
+.phase5n-featured .phase5n-featured-product {
+  min-height: 100%;
+}
+
+.phase5n-featured .phase5n-featured-product::before {
+  right: 24%;
+  bottom: 9%;
+  left: 24%;
+  height: 7%;
+  background: rgba(30, 29, 26, 0.2);
+  filter: blur(13px);
+}
+
+.phase5n-featured-product-art {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.phase5n-featured-product-art::before,
+.phase5n-featured-product-art::after {
+  position: absolute;
+  display: block;
+  border: 1px solid rgba(30, 29, 26, 0.24);
+  border-radius: 50%;
+  content: '';
+  pointer-events: none;
+}
+
+.phase5n-featured-product-art::before {
+  width: 55%;
+  aspect-ratio: 1;
+  transform: translate(-17%, 8%);
+}
+
+.phase5n-featured-product-art::after {
+  width: 27%;
+  aspect-ratio: 1;
+  border-color: rgba(246, 241, 231, 0.74);
+  transform: translate(125%, -105%);
+}
+
+.phase5n-featured-product-art img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: min(66%, 420px);
+  height: 82%;
+  max-height: 560px;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 12px rgba(30, 29, 26, 0.16)); /* taste-skill-ignore: small transparent-product grounding shadow. */
+}
+
+.phase5n-featured .phase5n-featured-copy {
+  justify-content: center;
+  padding: clamp(42px, 5vw, 82px);
+}
+
+.phase5n-featured .phase5n-featured-copy h3 {
+  max-width: 9ch;
+  font-size: clamp(3.2rem, 5.3vw, 6rem);
+}
+
+.phase5n-featured .phase5n-featured-copy > p {
+  max-width: 32ch;
+}
+
+.phase5n-featured-note {
+  display: block;
+  max-width: 25ch;
+  margin-top: 18px;
+  color: inherit;
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.phase5n-featured-decor {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.phase5n-featured-orbit {
+  position: absolute;
+  display: block;
+  border: 1px solid rgba(30, 29, 26, 0.28);
+  border-radius: 50%;
+}
+
+.phase5n-featured-orbit-one {
+  top: 8%;
+  left: 5%;
+  width: 23%;
+  aspect-ratio: 1;
+}
+
+.phase5n-featured-orbit-two {
+  right: 8%;
+  bottom: 10%;
+  width: 28%;
+  aspect-ratio: 1;
+  border-color: rgba(246, 241, 231, 0.64);
+}
+
+.phase5n-featured-spark {
+  position: absolute;
+  width: 34px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.6;
+  transform: rotate(42deg);
+}
+
+.phase5n-featured-spark::after {
+  position: absolute;
+  top: -16px;
+  left: 16px;
+  width: 2px;
+  height: 34px;
+  background: currentColor;
+  content: '';
+}
+
+.phase5n-featured-spark-one {
+  top: 18%;
+  right: 18%;
+}
+
+.phase5n-featured-spark-two {
+  bottom: 21%;
+  left: 16%;
+  transform: rotate(-42deg) scale(0.7);
+}
+
+.phase5n-featured-paw {
+  position: absolute;
+  top: 20%;
+  left: 42%;
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(246, 241, 231, 0.8);
+  transform: rotate(45deg);
+}
+
+.phase5n-featured-paw::after {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(246, 241, 231, 0.8);
+  content: '';
+  transform: rotate(18deg);
+}
+
+.phase5n-featured.is-pink .phase5n-featured-orbit {
+  border-color: rgba(120, 47, 54, 0.36);
+}
+
+.phase5n-featured.is-coffee .phase5n-featured-orbit {
+  border-color: rgba(30, 29, 26, 0.34);
+}
+
+.phase5n-featured .phase5n-featured-controls {
+  align-items: center;
+}
+
+.phase5n-featured .phase5n-featured-caption {
+  max-width: 32ch;
+}
+
+@media (max-width: 1024px) {
+  .phase5n-hero .phase5n-hero-copy {
+    grid-column: 1 / span 6;
+  }
+
+  .phase5n-hero .phase5n-hero-stage {
+    grid-column: 7 / -1;
+  }
+
+  .phase5n-fusion .phase5n-fusion-inner {
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    gap: 42px;
+  }
+
+  .phase5n-fusion .phase5m-fusion-heading {
+    font-size: clamp(3.1rem, 6vw, 5.2rem);
+  }
+
+  .phase5n-featured .phase5n-featured-state {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.94fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .phase5n-hero .phase5n-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .phase5n-hero .phase5n-hero-copy {
+    grid-column: 1;
+    padding-bottom: 8px;
+  }
+
+  .phase5n-hero .phase5n-hero-stage {
+    grid-column: 1;
+    min-height: 400px;
+    margin: 0 -20px;
+  }
+
+  .phase5n-hero .phase5n-hero-botanical {
+    inset: 2% 0 6%;
+  }
+
+  .phase5n-hero .phase5m-hero-can-left {
+    left: -4%;
+    width: 42%;
+  }
+
+  .phase5n-hero .phase5m-hero-can-center {
+    left: 20%;
+    width: 57%;
+  }
+
+  .phase5n-hero .phase5m-hero-can-right {
+    right: -4%;
+    width: 42%;
+  }
+
+  .phase5n-fusion .phase5n-fusion-inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .phase5n-fusion .phase5n-fusion-stage {
+    min-height: 520px;
+  }
+
+  .phase5n-fusion .phase5m-fusion-matcha {
+    bottom: 4%;
+    left: 22%;
+    width: 43%;
+  }
+
+  .phase5n-fusion .phase5m-fusion-coffee {
+    bottom: 10%;
+    left: -2%;
+    width: 32%;
+  }
+
+  .phase5n-fusion .phase5m-fusion-food {
+    right: -2%;
+    bottom: 6%;
+    width: 40%;
+  }
+
+  .phase5n-fusion .phase5m-fusion-sweet {
+    top: 8%;
+    right: 20%;
+    width: 34%;
+  }
+
+  .phase5n-featured .phase5n-featured-stage {
+    min-height: 650px;
+  }
+
+  .phase5n-featured .phase5n-featured-state {
+    grid-template-columns: 1fr;
+    grid-template-rows: 58% 42%;
+  }
+
+  .phase5n-featured-product-art img {
+    width: min(62%, 300px);
+    height: 78%;
+  }
+
+  .phase5n-featured .phase5n-featured-copy {
+    justify-content: start;
+    padding: 26px 24px 32px;
+  }
+
+  .phase5n-featured .phase5n-featured-copy h3 {
+    font-size: clamp(2.8rem, 11vw, 4.3rem);
+  }
+
+  .phase5n-featured .phase5n-featured-controls {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 380px) {
+  .phase5n-hero .phase5n-hero-stage {
+    min-height: 390px;
+  }
+
+  .phase5n-fusion .phase5n-fusion-stage {
+    min-height: 500px;
+  }
+
+  .phase5n-featured .phase5n-featured-stage {
+    min-height: 620px;
+  }
+
+  .phase5n-featured-product-art img {
+    width: min(60%, 270px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase5n-featured,
+  .phase5n-featured * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Phase 5M true final cascade: keep the botanical compositions ahead of legacy phase rules. */
+/* Phase 5M evidence correction: keep supporting copy clear and bring the mobile bouquet into view. */
+.phase5m-fusion .phase5m-fusion-note {
+  top: 7%;
+  bottom: auto;
+  left: 7%;
+  max-width: 15ch;
+}
+
+.phase5m-hero .phase5m-hero-label {
+  top: 6%;
+  bottom: auto;
+  right: auto;
+  left: 4%;
+  text-align: left;
+}
+
+.phase5m-hero .phase5m-hero-stage figcaption {
+  right: 5%;
+  bottom: 3%;
+  padding: 5px 7px;
+  background: rgba(30, 29, 26, 0.68);
+}
+
+@media (max-width: 768px) {
+  .phase5m-hero .phase5m-hero-layout {
+    padding-block: 24px 0 !important;
+  }
+
+  .phase5m-hero .phase5m-hero-copy {
+    padding-bottom: 8px !important;
+  }
+
+  .phase5m-hero.phase5c-hero h1 {
+    font-size: clamp(52px, 14.4vw, 64px) !important;
+  }
+
+  .phase5m-hero .phase5m-hero-proposition {
+    margin-top: 18px;
+    font-size: clamp(1.55rem, 6.8vw, 2.4rem);
+  }
+
+  .phase5m-hero .phase5m-hero-description {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .phase5m-hero .phase5m-hero-actions {
+    margin-top: 18px;
+    gap: 14px;
+  }
+
+  .phase5m-hero .phase5m-hero-stage {
+    min-height: 400px !important;
+  }
+
+  .phase5m-hero .phase5m-hero-botanical {
+    inset: 2% 0 5%;
+  }
+
+  .phase5m-hero .phase5m-hero-label {
+    display: none;
+  }
+
+  .phase5m-hero .phase5m-hero-stage figcaption {
+    top: 2%;
+    right: auto;
+    bottom: auto;
+    left: 5%;
+    max-width: 21ch;
+    text-align: left;
+  }
+
+  .phase5m-fusion .phase5m-fusion-note {
+    top: 6%;
+    bottom: auto;
+    left: 5%;
+    max-width: 13ch;
+    font-size: 1.05rem;
+  }
+}
+
+.phase5m-hero.phase5c-hero {
+  overflow: clip;
+}
+
+.phase5m-hero .phase5m-hero-layout {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.phase5m-hero .phase5m-hero-copy {
+  grid-column: 1 / span 5;
+}
+
+.phase5m-hero.phase5c-hero h1 {
+  max-width: 100%;
+  font-size: clamp(58px, 6.8vw, 104px);
+}
+
+.phase5m-hero .phase5m-hero-stage {
+  grid-column: 6 / -1;
+  min-height: min(900px, calc(100svh - var(--nav-height)));
+  margin-right: -4vw;
+  overflow: visible;
+}
+
+.phase5m-fusion .phase5m-fusion-inner {
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: clamp(42px, 7vw, 120px);
+}
+
+.phase5m-fusion .phase5m-fusion-heading {
+  max-width: 8ch;
+  font-size: clamp(3.4rem, 6vw, 6.8rem);
+  line-height: 0.84;
+}
+
+.phase5m-fusion .phase5m-fusion-stage {
+  min-height: clamp(520px, 43vw, 680px);
+  overflow: hidden;
+  background: var(--olive);
+}
+
+@media (max-width: 1024px) {
+  .phase5m-hero .phase5m-hero-copy {
+    grid-column: 1 / span 7;
+  }
+
+  .phase5m-hero .phase5m-hero-stage {
+    grid-column: 5 / -1;
+    margin-right: -10vw;
+  }
+
+  .phase5m-hero.phase5c-hero h1 {
+    font-size: clamp(56px, 7vw, 88px);
+  }
+
+  .phase5m-fusion .phase5m-fusion-inner {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 38px;
+  }
+
+  .phase5m-fusion .phase5m-fusion-heading {
+    font-size: clamp(3.2rem, 6.5vw, 5.4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .phase5m-hero .phase5m-hero-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-block: 38px 0;
+  }
+
+  .phase5m-hero .phase5m-hero-copy {
+    grid-column: 1;
+    grid-row: auto;
+    padding: 0 0 22px;
+  }
+
+  .phase5m-hero.phase5c-hero h1 {
+    font-size: clamp(54px, 16.4vw, 76px);
+  }
+
+  .phase5m-hero .phase5m-hero-stage {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 454px;
+    margin: 0 -20px;
+  }
+
+  .phase5m-fusion .phase5m-fusion-inner {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .phase5m-fusion .phase5m-fusion-heading {
+    max-width: 7.5ch;
+    font-size: clamp(3.2rem, 14vw, 5.5rem);
+  }
+
+  .phase5m-fusion .phase5m-fusion-stage {
+    min-height: 558px;
+  }
+}
+
+@media (max-width: 360px) {
+  .phase5m-hero.phase5c-hero h1 {
+    font-size: 52px;
+  }
+
+  .phase5m-hero .phase5m-hero-stage {
+    min-height: 414px;
+  }
+
+  .phase5m-fusion .phase5m-fusion-stage {
+    min-height: 500px;
+  }
+}
 
 /* Phase 5E.2 final surface precedence. */
 .phase3-story.phase5e2-story {

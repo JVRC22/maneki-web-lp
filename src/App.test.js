@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import App from './App';
 import { allMenuItems, menuCombos, menuExtras, menuItems, menuMeta, starterMenuItems } from './data/menu';
 import { menuPhotoAssets } from './data/assets';
@@ -17,12 +17,13 @@ test('renders the Maneki customer journey and primary menu path', () => {
 test('filters the complete menu by category using accessible tabs', () => {
   render(<App />);
 
-  expect(screen.getByText('Kohi Rocks')).toBeInTheDocument();
+  const menuResults = screen.getByRole('tabpanel', { name: 'Todo el menú' });
+  expect(within(menuResults).getByText('Kohi Rocks')).toBeInTheDocument();
   fireEvent.click(screen.getByRole('tab', { name: 'Bebidas calientes' }));
 
   expect(screen.getByText('Kohi Americano')).toBeInTheDocument();
   expect(screen.getByText('Dalgona Warm')).toBeInTheDocument();
-  expect(screen.queryByText('Kohi Rocks')).not.toBeInTheDocument();
+  expect(within(menuResults).queryByText('Kohi Rocks')).not.toBeInTheDocument();
   expect(screen.getByRole('tab', { name: 'Bebidas calientes' })).toHaveAttribute('aria-selected', 'true');
 });
 
@@ -75,7 +76,7 @@ test('supports arrow-key movement between menu categories', () => {
   render(<App />);
 
   const allMenuTab = screen.getByRole('tab', { name: 'Todo el menú' });
-  allMenuTab.focus();
+  act(() => allMenuTab.focus());
   fireEvent.keyDown(allMenuTab, { key: 'ArrowRight' });
 
   expect(screen.getByRole('tab', { name: 'Bebidas frías' })).toHaveAttribute('aria-selected', 'true');
@@ -116,9 +117,24 @@ test('keeps all documented menu entries and confirmed price data', () => {
 test('uses only verified menu-photo mappings for product imagery', () => {
   render(<App />);
 
-  expect(screen.getByRole('img', { name: /Kohi Rocks: Café frío Maneki/i })).toHaveAttribute('loading', 'lazy');
-  expect(screen.getByRole('img', { name: /Matcha Kiss: Matcha frío Maneki/i })).toHaveAttribute('loading', 'lazy');
-  expect(screen.getAllByRole('img', { name: /Onigiri/i }).length).toBeGreaterThan(0);
+  const menuResults = screen.getByRole('tabpanel', { name: 'Todo el menú' });
+  expect(within(menuResults).getByRole('img', { name: /Kohi Rocks: Café frío Maneki/i })).toHaveAttribute('loading', 'lazy');
+  expect(within(menuResults).getByRole('img', { name: /Matcha Kiss: Matcha frío Maneki/i })).toHaveAttribute('loading', 'lazy');
+  expect(within(menuResults).getAllByRole('img', { name: /Onigiri/i }).length).toBeGreaterThan(0);
+});
+
+test('uses the corrected discovery image set in the intended order', () => {
+  render(<App />);
+
+  const discovery = screen.getByTestId('menu-discovery');
+  const imageSources = within(discovery).getAllByRole('presentation').map((image) => image.getAttribute('src'));
+
+  expect(imageSources).toEqual([
+    '/images/menu/corrected/matcha-kiss.webp',
+    '/images/menu/corrected/kohi-rocks.webp',
+    '/images/menu/corrected/hanami-dream.webp',
+    '/images/menu/corrected/onigiri-crunch.webp',
+  ]);
 });
 
 test('isolates the mobile navigation and restores focus after closing', () => {
@@ -145,14 +161,15 @@ test('isolates the mobile navigation and restores focus after closing', () => {
 test('integrates conceptual visuals with truthful alternative text and loading policy', () => {
   render(<App />);
 
-  const matchaImages = screen.getAllByRole('img', { name: /lata conceptual de matcha/i });
-  expect(matchaImages.find((image) => image.getAttribute('fetchpriority') === 'high')).toBeTruthy();
+  const matchaImages = screen.getAllByRole('img', { name: /Matcha Kiss: Matcha frío Maneki/i });
+  expect(matchaImages.some((image) => image.getAttribute('src') === '/images/menu/corrected/matcha-kiss.webp')).toBe(true);
   expect(screen.getByRole('heading', { level: 3, name: 'Neko Neko Adventures' })).toBeInTheDocument();
   expect(screen.getByRole('img', { name: /gato negro de peluche/i })).toHaveAttribute('loading', 'lazy');
   expect(screen.getByRole('img', { name: /caja conceptual armada de neko neko adventures/i })).toHaveAttribute('loading', 'lazy');
   expect(screen.getByRole('img', { name: /variante conceptual de llavero neko neko negro con gafas/i })).toHaveAttribute('loading', 'lazy');
   expect(screen.getByRole('img', { name: /variante conceptual de llavero neko neko rosa/i })).toHaveAttribute('loading', 'lazy');
-  expect(screen.getByRole('img', { name: /bebida rosada conceptual/i })).toHaveAttribute('loading', 'lazy');
+  expect(screen.getAllByRole('img', { name: /Hanami Dream: Matcha frío Maneki con fruta de temporada/i })
+    .some((image) => image.getAttribute('loading') === 'lazy')).toBe(true);
   expect(screen.getByRole('img', { name: /ilustración conceptual de un carrito móvil maneki/i })).toHaveAttribute('src', '/images/maneki/brand/maneki-mini-illustration.svg');
 });
 
@@ -164,6 +181,47 @@ test('switches the featured specimen without changing the menu state', () => {
   expect(screen.getByRole('tab', { name: 'Por temporada' })).toHaveAttribute('aria-selected', 'true');
   expect(screen.getByRole('tabpanel', { name: 'Por temporada' })).toHaveTextContent('Colección conceptual en evaluación.');
   expect(screen.getByRole('tabpanel', { name: 'Todo el menú' })).toBeInTheDocument();
+});
+
+test('autoplays featured specimens and resets the timer after a manual selection', () => {
+  jest.useFakeTimers();
+
+  try {
+    render(<App />);
+
+    expect(screen.getByRole('tab', { name: 'Matcha frío' })).toHaveAttribute('aria-selected', 'true');
+
+    act(() => jest.advanceTimersByTime(5000));
+    expect(screen.getByRole('tab', { name: 'Por temporada' })).toHaveAttribute('aria-selected', 'true');
+
+    fireEvent.click(screen.getByRole('tab', { name: 'Café frío' }));
+    act(() => jest.advanceTimersByTime(4999));
+    expect(screen.getByRole('tab', { name: 'Café frío' })).toHaveAttribute('aria-selected', 'true');
+
+    act(() => jest.advanceTimersByTime(1));
+    expect(screen.getByRole('tab', { name: 'Matcha frío' })).toHaveAttribute('aria-selected', 'true');
+  } finally {
+    jest.useRealTimers();
+  }
+});
+
+test('pauses autoplay only while the featured controls are hovered', () => {
+  jest.useFakeTimers();
+
+  try {
+    render(<App />);
+    const controls = screen.getByTestId('featured-controls');
+
+    fireEvent.mouseEnter(controls);
+    act(() => jest.advanceTimersByTime(5000));
+    expect(screen.getByRole('tab', { name: 'Matcha frío' })).toHaveAttribute('aria-selected', 'true');
+
+    fireEvent.mouseLeave(controls);
+    act(() => jest.advanceTimersByTime(5000));
+    expect(screen.getByRole('tab', { name: 'Por temporada' })).toHaveAttribute('aria-selected', 'true');
+  } finally {
+    jest.useRealTimers();
+  }
 });
 
 test('validates the clearly labeled contact demonstration without sending data', () => {
@@ -179,4 +237,20 @@ test('validates the clearly labeled contact demonstration without sending data',
   fireEvent.click(screen.getByRole('button', { name: 'Validar demostración' }));
 
   expect(screen.getByText(/Demostración completada\./)).toHaveTextContent('no se envió a ningún destinatario');
+});
+
+test('presents the approved story content and routes Maneki Mini to the demo contact reason', () => {
+  render(<App />);
+
+  expect(screen.getByText(/Posicionar a Maneki como la cafetería de fusión asiática-mexicana/)).toBeInTheDocument();
+  expect(screen.getByText(/Para 2031, Maneki será la cafetería de fusión asiática-mexicana/)).toBeInTheDocument();
+  expect(screen.getByText('2031')).toBeInTheDocument();
+  expect(screen.getByPlaceholderText('¿Cómo te llamas?')).toBeInTheDocument();
+  expect(screen.getByPlaceholderText('tu-correo@ejemplo.com')).toBeInTheDocument();
+  expect(screen.getByPlaceholderText('Cuéntanos un poco sobre tu idea...')).toBeInTheDocument();
+  expect(screen.getByRole('option', { name: 'Eventos' })).toBeInTheDocument();
+
+  fireEvent.click(screen.getByRole('link', { name: 'Proponer Maneki Mini' }));
+
+  expect(screen.getByLabelText(/^Motivo de contacto/)).toHaveValue('mini');
 });

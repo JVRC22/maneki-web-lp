@@ -95,7 +95,7 @@ export const menuItems = [
   product('ocha-classic', 'hot-drinks', 'Ocha Classic', ['Limón', 'Miel', 'Clásico'], 'Safe Food', '$55', 'Té caliente para empezar por lo conocido.'),
   product('ocha-bloom', 'hot-drinks', 'Ocha Bloom', ['Limón', 'Miel', 'Clásico'], 'Nicho', '$65', 'Una pausa caliente con perfil floral y cítrico.'),
   product('matcha-cloud', 'hot-drinks', 'Matcha Cloud', ['Clásico'], 'Novedad', '$75–80', 'Matcha caliente para descubrir otra temperatura y textura.'),
-  product('onigiri-crunch', 'savory', 'Onigiri Crunch', ['Carne empanizada', 'Aguacate', 'Pepino', 'Queso crema'], 'Safe Food', '$100', 'Onigiri empanizado, sin alga, con sabores familiares.'),
+  product('onigiri-crunch', 'savory', 'Onigiri Crunch', ['Arrachera', 'Aguacate', 'Pepino', 'Queso crema'], 'Safe Food', '$100', 'Onigiri empanizado, sin alga, con sabores familiares.'),
   product('onigiri-ocean', 'savory', 'Onigiri Ocean', ['Surimi', 'Aguacate', 'Pepino', 'Queso crema'], 'Nicho', '$95', 'Una interpretación fresca y cremosa del onigiri.'),
   product('onigiri-teri', 'savory', 'Onigiri Teri', ['Pollo teriyaki', 'Aguacate', 'Pepino', 'Queso crema'], 'Novedad', '$100', 'Pollo teriyaki y contrastes frescos en formato empanizado.'),
   product('pancake-neko', 'sweet', 'Pancake Neko', ['Nutella', 'Lechera', 'Honey butter'], 'Safe Food', '$65–75', 'Hot cakes suaves con toppings familiares.'),

@@ -1,0 +1,245 @@
+/* Phase 5O: final visual precedence after the legacy presentation layers. */
+.phase5n-hero .phase5c-hero-edge-note {
+  top: 44%;
+  right: 23%;
+  bottom: auto;
+  max-width: 12ch;
+}
+
+.phase5n-fusion .phase5m-fusion-matcha { bottom: 2%; left: 28%; width: 31%; }
+.phase5n-fusion .phase5m-fusion-coffee { bottom: 10%; left: 3%; width: 25%; }
+.phase5n-fusion .phase5m-fusion-food { top: 28%; right: 3%; bottom: auto; width: 39%; }
+.phase5n-fusion .phase5m-fusion-sweet { top: 7%; right: 27%; width: 29%; }
+
+.phase3-menu-section .phase5e-discovery-grid {
+  gap: 0;
+  background: transparent;
+}
+
+.phase3-menu-section .phase5l-discovery-card {
+  min-height: 558px;
+  grid-template-rows: 276px minmax(0, 1fr);
+  overflow: hidden;
+  border: 0;
+}
+
+.phase3-menu-section .phase5l-discovery-media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 18px 16px 12px;
+  isolation: isolate;
+}
+
+.phase3-menu-section .phase5l-discovery-media::before,
+.phase3-menu-section .phase5l-discovery-media::after {
+  position: absolute;
+  display: block;
+  content: '';
+  pointer-events: none;
+}
+
+.phase3-menu-section .phase5l-discovery-media::before {
+  z-index: 0;
+  width: 68%;
+  aspect-ratio: 1;
+  border-radius: 48% 52% 42% 58%;
+  opacity: 0.34;
+  transform: rotate(-14deg);
+}
+
+.phase3-menu-section .phase5l-discovery-media::after {
+  z-index: 1;
+  bottom: 11%;
+  width: 45%;
+  height: 8%;
+  border-radius: 50%;
+  background: rgba(30, 29, 26, 0.22);
+  filter: blur(12px);
+}
+
+.phase3-menu-section .phase5l-discovery-card.is-olive .phase5l-discovery-media::before { background: var(--pink-fill); }
+.phase3-menu-section .phase5l-discovery-card.is-coffee .phase5l-discovery-media::before { background: var(--burgundy); }
+.phase3-menu-section .phase5l-discovery-card.is-pink .phase5l-discovery-media::before { background: var(--ground); }
+.phase3-menu-section .phase5l-discovery-card.is-burgundy .phase5l-discovery-media::before { background: var(--pink-fill); }
+
+.phase3-menu-section .phase5l-discovery-media img {
+  position: relative;
+  z-index: 2;
+  width: min(78%, 190px);
+  height: 88%;
+  object-fit: contain;
+  transform: none;
+  filter: drop-shadow(0 16px 12px rgba(30, 29, 26, 0.17)); /* taste-skill-ignore: transparent product cutouts need grounding. */
+}
+
+.phase3-menu-section .phase5l-discovery-card.is-burgundy .phase5l-discovery-media img { width: min(88%, 228px); }
+
+.phase3-menu-section .phase5l-discovery-copy {
+  position: relative;
+  z-index: 2;
+  min-height: 0;
+  padding: 24px 20px 26px;
+}
+
+.phase3-menu-section .phase5l-discovery-card:hover .phase5l-discovery-media img,
+.phase3-menu-section .phase5l-discovery-card:focus-within .phase5l-discovery-media img {
+  transform: scale(1.045);
+}
+
+.phase5e2-seasonal-campaign {
+  grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr) !important;
+  min-height: clamp(580px, 48vw, 700px);
+}
+
+.phase5e2-seasonal-campaign .phase5e-seasonal-copy {
+  padding: clamp(44px, 5vw, 76px);
+}
+
+.phase5e2-seasonal-campaign .phase5e-seasonal-copy h3 {
+  max-width: 8ch;
+  font-size: clamp(3rem, 4.6vw, 5.25rem);
+  line-height: 0.86;
+}
+
+.phase5e2-seasonal-campaign .phase5e-seasonal-media {
+  position: relative;
+  display: grid;
+  min-height: 0;
+  place-items: center;
+  padding: clamp(28px, 4vw, 54px);
+  overflow: visible;
+  isolation: isolate;
+}
+
+.phase5e2-seasonal-campaign .phase5e-seasonal-media::after {
+  position: absolute;
+  z-index: 0;
+  right: 8%;
+  bottom: 9%;
+  width: 40%;
+  height: 9%;
+  border-radius: 50%;
+  background: rgba(30, 29, 26, 0.2);
+  content: '';
+  filter: blur(15px);
+}
+
+.phase5e2-seasonal-campaign .phase5e-seasonal-media img {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  height: calc(100% - 32px);
+  max-width: 72%;
+  max-height: 620px;
+  object-fit: contain;
+  transform: translate3d(0, 0, 0);
+  filter: drop-shadow(0 18px 16px rgba(30, 29, 26, 0.16)); /* taste-skill-ignore: transparent product cutouts need grounding. */
+}
+
+.phase5e2-collectible-scene {
+  grid-template-columns: minmax(300px, 0.86fr) minmax(0, 1.14fr);
+  min-height: clamp(600px, 50vw, 720px);
+}
+
+.phase5e2-collectible-copy {
+  position: relative;
+  z-index: 2;
+  padding: clamp(44px, 5vw, 76px);
+}
+
+.phase5e2-collectible-copy h3 {
+  max-width: 8ch;
+  font-size: clamp(3.2rem, 4.8vw, 5.6rem);
+  line-height: 0.84;
+}
+
+.phase5g-collectible-stage {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.phase5g-collectible-stage::before {
+  position: absolute;
+  z-index: 1;
+  top: 16%;
+  left: 10%;
+  width: 34%;
+  aspect-ratio: 1;
+  border: 2px solid rgba(246, 241, 231, 0.46);
+  border-radius: 50%;
+  content: '';
+  transform: rotate(-16deg);
+}
+
+.phase5g-collectible-stage::after {
+  position: absolute;
+  z-index: 1;
+  right: 11%;
+  bottom: 18%;
+  width: 2px;
+  height: 92px;
+  background: rgba(246, 241, 231, 0.62);
+  content: '';
+  transform: rotate(34deg);
+  transform-origin: bottom center;
+}
+
+.phase5g-collectible-stage img { filter: drop-shadow(0 18px 14px rgba(30, 29, 26, 0.18)); /* taste-skill-ignore: transparent collectible cutouts need grounding. */ }
+.phase5g-collectible-box { top: 8%; right: 30%; width: 31%; height: 67%; }
+.phase5g-collectible-black { bottom: 4%; left: 4%; width: 28%; height: 45%; }
+.phase5g-collectible-glasses { top: 14%; right: 4%; width: 25%; height: 42%; }
+.phase5g-collectible-pink { right: 17%; bottom: 2%; width: 26%; height: 44%; }
+
+@media (max-width: 768px) {
+  .phase5n-hero .phase5c-hero-edge-note { display: none; }
+  .phase5n-fusion .phase5m-fusion-matcha { bottom: 3%; left: 23%; width: 42%; }
+  .phase5n-fusion .phase5m-fusion-coffee { bottom: 10%; left: -1%; width: 31%; }
+  .phase5n-fusion .phase5m-fusion-food { top: 31%; right: -1%; width: 41%; }
+  .phase5n-fusion .phase5m-fusion-sweet { top: 7%; right: 20%; width: 34%; }
+  .phase3-menu-section .phase5l-discovery-grid { gap: 0; }
+  .phase3-menu-section .phase5l-discovery-card { min-height: 520px; grid-template-rows: 238px minmax(0, 1fr); }
+  .phase3-menu-section .phase5l-discovery-media img { width: min(78%, 172px); height: 88%; }
+  .phase3-menu-section .phase5l-discovery-card.is-burgundy .phase5l-discovery-media img { width: min(88%, 212px); }
+  .phase5e2-seasonal-campaign,
+  .phase5e2-collectible-scene {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+  }
+  .phase5e2-seasonal-campaign .phase5e-seasonal-copy { min-height: 348px; padding: 42px 28px 34px; }
+  .phase5e2-seasonal-campaign .phase5e-seasonal-media { width: 100%; min-height: 430px; flex: 0 0 430px; padding: 28px 24px 34px; }
+  .phase5e2-seasonal-campaign .phase5e-seasonal-media img { width: auto; height: calc(100% - 32px); max-width: 72%; }
+  .phase5e2-collectible-copy { min-height: 330px; padding: 44px 28px; }
+  .phase5e2-collectible-copy h3 { max-width: 8ch; font-size: clamp(3.05rem, 12.5vw, 4.8rem); }
+  .phase5g-collectible-stage { min-height: 520px; }
+  .phase5g-collectible-box { top: 8%; right: 27%; width: 39%; height: 60%; }
+  .phase5g-collectible-black { bottom: 4%; left: 3%; width: 35%; height: 42%; }
+  .phase5g-collectible-glasses { top: 15%; right: 2%; width: 31%; height: 37%; }
+  .phase5g-collectible-pink { right: 19%; bottom: 3%; width: 33%; height: 40%; }
+}
+
+@media (max-width: 380px) {
+  .phase5e2-seasonal-campaign .phase5e-seasonal-media { min-height: 400px; }
+  .phase5e2-seasonal-campaign .phase5e-seasonal-media { flex-basis: 400px; }
+  .phase5e2-seasonal-campaign .phase5e-seasonal-media img { width: auto; max-width: 72%; }
+  .phase5g-collectible-stage { min-height: 470px; }
+}
+
+@media (max-width: 360px) {
+  .phase5e2-seasonal-campaign .phase5e-seasonal-copy h3,
+  .phase5e2-collectible-copy h3 {
+    max-width: 10ch;
+    font-size: 2.55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase3-menu-section .phase5l-discovery-media img,
+  .phase3-menu-section .phase5l-discovery-card,
+  .phase5e2-seasonal-campaign .phase5e-seasonal-media img {
+    transition: none !important;
+  }
+}
