@@ -4,11 +4,7 @@ import { menuPhotoAssets } from '../data/assets';
 import { motion, useEditorialReveal } from './EditorialReveal';
 import { gsap, prefersReducedMotion, useGSAP } from '../motion/gsap';
 
-const fusionProducts = [
-  { key: 'matcha-kiss', label: 'Matcha Kiss', family: 'Matcha', asset: menuPhotoAssets['matcha-kiss'] },
-  { key: 'kohi-rocks', label: 'Kohi Rocks', family: 'Café', asset: menuPhotoAssets['kohi-rocks'] },
-  { key: 'onigiri-crunch', label: 'Onigiri Crunch', family: 'Comida', asset: menuPhotoAssets['onigiri-crunch'] },
-];
+const fusionProduct = menuPhotoAssets['yuzu-bloom'];
 
 export default function BrandStory() {
   const storyRef = useRef(null);
@@ -25,10 +21,19 @@ export default function BrandStory() {
       },
     });
 
+    const idleTween = gsap.to('.phase5t-product-card', {
+      y: -5,
+      duration: 2.8,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+      paused: true,
+    });
+
     scene
       .fromTo('.phase5t-product-card',
-        { opacity: 0, transform: 'translate3d(0, 22px, 0) rotate(2deg) scale(0.94)' },
-        { opacity: 1, transform: 'translate3d(0, 0, 0) rotate(0deg) scale(1)', duration: 0.66, stagger: 0.08, ease: 'power3.out', immediateRender: false }
+        { opacity: 0, y: 22, scale: 0.94 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.72, ease: 'power3.out', immediateRender: false }
       )
       .fromTo('.phase5t-stage-lockup, .phase5t-stage-note',
         { opacity: 0, transform: 'translate3d(0, 10px, 0)' },
@@ -36,7 +41,13 @@ export default function BrandStory() {
         '-=0.38'
       );
 
-    return () => scene.kill();
+    scene.eventCallback('onComplete', () => idleTween.play(0));
+    scene.eventCallback('onReverseComplete', () => idleTween.pause(0));
+
+    return () => {
+      idleTween.kill();
+      scene.kill();
+    };
   }, { scope: storyRef });
 
   return (
@@ -48,19 +59,20 @@ export default function BrandStory() {
         </div>
 
         <div className="phase5t-story-layout">
-          <div className="phase5t-fusion-stage" aria-label="Tres productos conceptuales que muestran la fusión de Asia y México">
+          <div className="phase5t-fusion-stage" aria-label="Bebida conceptual Yuzu Bloom que muestra la fusión de Asia y México">
             <div className="phase5t-stage-blob" aria-hidden="true" />
             <div className="phase5t-stage-lockup">
               <span>MANEKI</span>
               <strong>Asia + México</strong>
             </div>
             <div className="phase5t-product-row">
-              {fusionProducts.map(({ key, label, family, asset }) => (
-                <figure className={`phase5t-product-card phase5t-product-${key}`} key={key}>
-                  <img src={asset.src} alt={asset.alt} width={asset.width} height={asset.height} loading="lazy" />
-                  <figcaption><strong>{label}</strong><span>{family}</span></figcaption>
-                </figure>
-              ))}
+              <figure className="phase5t-product-card">
+                <img src={fusionProduct.src} alt={fusionProduct.alt} width={fusionProduct.width} height={fusionProduct.height} loading="lazy" />
+                <figcaption className="phase5t-product-label">
+                  <strong>Yuzu Bloom</strong>
+                  <span>Refresher asiático</span>
+                </figcaption>
+              </figure>
             </div>
             <p className="phase5t-stage-note">Sabores que se sienten cerca.</p>
           </div>

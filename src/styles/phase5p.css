@@ -732,7 +732,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
   gap: clamp(24px, 4vw, 64px);
-  align-items: stretch;
+  align-items: start;
 }
 
 .phase5t-fusion-stage {
@@ -787,16 +787,21 @@
 }
 
 .phase5t-product-row {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(8px, 1.5vw, 20px);
-  align-items: end;
-  margin-top: clamp(38px, 5vw, 68px);
+  margin-top: clamp(8px, 1.5vw, 18px);
 }
 
 .phase5t-product-card {
+  display: flex;
+  width: clamp(250px, 38%, 390px);
+  flex-direction: column;
+  align-items: center;
   min-width: 0;
   margin: 0;
   text-align: center;
@@ -805,31 +810,32 @@
 .phase5t-product-card img {
   display: block;
   width: 100%;
-  height: clamp(235px, 27vw, 370px);
+  height: clamp(320px, 35vw, 500px);
   object-fit: contain;
-  object-position: center bottom;
+  object-position: center;
+  filter: drop-shadow(0 22px 18px rgba(30, 29, 26, 0.3));
 }
 
-.phase5t-product-card figcaption {
+.phase5t-product-label {
   display: grid;
   gap: 4px;
-  min-height: 48px;
-  margin-top: 8px;
-  padding: 9px 8px;
-  color: var(--ink);
-  background: var(--ground);
-  text-align: left;
+  margin-top: -2px;
+  color: var(--ground);
+  text-align: center;
 }
 
-.phase5t-product-card figcaption strong {
-  font-size: 0.84rem;
-  line-height: 1.1;
+.phase5t-product-label strong {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  line-height: 1;
 }
 
-.phase5t-product-card figcaption span {
-  color: rgba(30, 29, 26, 0.68);
+.phase5t-product-label span {
+  color: rgba(246, 241, 231, 0.74);
   font-size: 0.72rem;
+  letter-spacing: 0.08em;
   line-height: 1.1;
+  text-transform: uppercase;
 }
 
 .phase5t-stage-note {
@@ -931,7 +937,7 @@
   }
 
   .phase5t-fusion-stage {
-    min-height: 560px;
+    min-height: 600px;
   }
 }
 
@@ -958,7 +964,7 @@
   }
 
   .phase5t-fusion-stage {
-    min-height: 500px;
+    min-height: 520px;
     padding: 28px 20px;
   }
 
@@ -974,24 +980,22 @@
   }
 
   .phase5t-product-row {
-    gap: 6px;
-    margin-top: 32px;
+    margin-top: 10px;
   }
 
   .phase5t-product-card img {
-    height: 230px;
+    height: 330px;
   }
 
-  .phase5t-product-card figcaption {
-    min-height: 56px;
-    padding: 8px 6px;
+  .phase5t-product-card {
+    width: min(78%, 320px);
   }
 
-  .phase5t-product-card figcaption strong {
-    font-size: 0.76rem;
+  .phase5t-product-label strong {
+    font-size: 1.05rem;
   }
 
-  .phase5t-product-card figcaption span {
+  .phase5t-product-label span {
     font-size: 0.68rem;
   }
 
@@ -1012,24 +1016,23 @@
   }
 
   .phase5t-fusion-stage {
-    min-height: 450px;
+    min-height: 480px;
     padding-inline: 16px;
   }
 
   .phase5t-product-row {
-    margin-top: 24px;
+    margin-top: 6px;
   }
 
   .phase5t-product-card img {
-    height: 190px;
+    height: 292px;
   }
 
-  .phase5t-product-card figcaption {
-    min-height: 60px;
-    padding-inline: 5px;
+  .phase5t-product-card {
+    width: min(86%, 300px);
   }
 
-  .phase5t-product-card figcaption strong {
-    font-size: 0.7rem;
+  .phase5t-product-label strong {
+    font-size: 0.96rem;
   }
 }
