@@ -130,7 +130,6 @@ Customer-facing discovery labels:
 | Combo Maneki | 1 bebida fría + 1 postre | $130 |
 | Combo Yume | 2 postres + 2 bebidas | $220 |
 | Combo Matcha Lover | Matcha Kiss + Matcha Cloud | $150 |
-| Combo Onigiri + Bebida | Onigiri Crunch + bebida fría | $160 |
 
 ## Public-content status
 

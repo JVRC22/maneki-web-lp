@@ -10,9 +10,9 @@
 
 The prototype now includes a small, optimized subset of the supplied conceptual references. Original reference files remain untouched in `/Users/jresendiz/Workspaces/Maneki/Referencias`.
 
-## Phase 5F menu photography
+## Phase 5F menu photography (superseded by Phase 5K)
 
-The original verified package was `/Users/jresendiz/Workspaces/Maneki/Referencias/MANEKI_menu_web_assets`. Phase 5H replaces those derivatives with the preferred V2 package at `/Users/jresendiz/Workspaces/Maneki/Referencias/MANEKI_Menu_V2`. The destination now serves 13 defensible product mappings with 600px and 1200px WebP variants through `srcset`; these remain optimized/interpolated menu concepts from low-resolution PDF sources, not commercially approved final photography.
+The original verified package was `/Users/jresendiz/Workspaces/Maneki/Referencias/MANEKI_menu_web_assets`. Phase 5H replaced those derivatives with the preferred V2 package at `/Users/jresendiz/Workspaces/Maneki/Referencias/MANEKI_Menu_V2`. This is the historical 13-image baseline; Phase 5K supersedes it with the complete corrected set documented below. These historical files remain in the repository for traceability but are no longer referenced by the active menu.
 
 | Source photograph | Destination asset | Menu use | Mapping status | Notes |
 |---|---|---|---|---|
@@ -32,7 +32,7 @@ The original verified package was `/Users/jresendiz/Workspaces/Maneki/Referencia
 
 The V2 package's other supplied photographs remain excluded from individual product cards. The three onigiri images visibly include seaweed, which conflicts with the documented “sin alga” menu; the pink/tropical refreshers, teas, mantou-chocolate, fruit-sando, and extras images are family-level or ingredient-ambiguous references. The eight transparent cutouts were inspected and excluded because their glass, ice, and edge segmentation remains too provisional for these compact product rows. The older V1 package remains available in `Referencias` for comparison and fallback.
 
-The 13 V2 small derivatives are used as the default source and the corresponding 1200px derivatives are offered as high-density candidates. The V2 package reports that the original source imagery ranges from 137–565px wide; the larger exports improve delivery flexibility but do not add optical detail.
+The historical V2 small derivatives and 1200px candidates are retained for traceability only; active menu rendering now uses `public/images/menu/corrected/`.
 
 Confirmed prices are now rendered publicly in `src/data/menu.js` as MXN values, including explicit ranges and extra charges. No “Precio por confirmar” state remains in the customer-facing menu.
 
@@ -51,7 +51,58 @@ The verified source package is `/Users/jresendiz/Workspaces/Maneki/Referencias/M
 | `maneki-uniformes-espalda.webp` | `public/images/maneki/brand/uniform-back.webp` | Community / identity | Back view paired with front view; CONCEPTUAL BRAND REFERENCE | Proposed staff identity, not merchandise or evidence of current staff. |
 | `maneki-tarjeta-lealtad-sin-fondo.webp` | `public/images/maneki/brand/loyalty-card.webp` | Community / identity | Future loyalty-card concept; CONCEPTUAL BRAND REFERENCE | No active rewards program or enrollment is offered. |
 
-The circular signage cutout, assembled campaign-packaging photograph, full cart photograph, weak cart crop, original contextual photographs, and alternate PNG/WebP exports were intentionally excluded. The 13 defensible menu mappings were retained but refreshed to V2 derivatives; no ambiguous V2 image was assigned to a named product.
+The circular signage cutout, assembled campaign-packaging photograph, full cart photograph, weak cart crop, original contextual photographs, and alternate PNG/WebP exports were intentionally excluded from this historical package. Phase 5K uses only the separately supplied corrected menu package.
+
+## Phase 5K corrected menu photography
+
+The supplied `/Users/jresendiz/Workspaces/Maneki/Referencias/Imagenes Corregidas` package was inspected visually before integration. All 38 menu PNGs are 1024×1536 with alpha; no image was reused across product IDs. The derivatives are 768×1152 WebP files in `public/images/menu/corrected/`, generated at quality 84. They are corrected conceptual menu photographs, not commercial approval or proof of current inventory.
+
+| Product ID | Source reference | Optimized derivative | Section |
+|---|---|---|---|
+| `kohi-rocks` | `Menu/Bebidas Frias/koshi-rocks.png` | `menu/corrected/kohi-rocks.webp` | Cold drinks |
+| `tokyo-frappe` | `Menu/Bebidas Frias/tokyo-frappe.png` | `menu/corrected/tokyo-frappe.webp` | Cold drinks |
+| `yume-latte` | `Menu/Bebidas Frias/yumme-latte.png` | `menu/corrected/yume-latte.webp` | Cold drinks |
+| `matcha-kiss` | `Menu/Bebidas Frias/matcha-kiss.png` | `menu/corrected/matcha-kiss.webp` | Cold drinks |
+| `midori-cloud` | `Menu/Bebidas Frias/midori-cloud.png` | `menu/corrected/midori-cloud.webp` | Cold drinks |
+| `hanami-dream` | `Menu/Bebidas Frias/hanami-dream.png` | `menu/corrected/hanami-dream.webp` | Cold drinks |
+| `zen-citrus` | `Menu/Bebidas Frias/zen-citrus.png` | `menu/corrected/zen-citrus.webp` | Cold drinks |
+| `kuro-berry` | `Menu/Bebidas Frias/kuro-berry.png` | `menu/corrected/kuro-berry.webp` | Cold drinks |
+| `yuzu-bloom` | `Menu/Bebidas Frias/yuzu-bloom.png` | `menu/corrected/yuzu-bloom.webp` | Cold drinks |
+| `limon-neko` | `Menu/Bebidas Frias/lomin-neko.png` | `menu/corrected/limon-neko.webp` | Cold drinks |
+| `maneki-lime` | `Menu/Bebidas Frias/maneki-lime.png` | `menu/corrected/maneki-lime.webp` | Cold drinks |
+| `yuzu-breeze` | `Menu/Bebidas Frias/yuzu-breeze.png` | `menu/corrected/yuzu-breeze.webp` | Cold drinks |
+| `bubble-pop` | `Menu/Bebidas Frias/bubble-pop.png` | `menu/corrected/bubble-pop.webp` | Cold drinks |
+| `kohi-americano` | `Menu/Bebidas Calientes/kohi-americano.png` | `menu/corrected/kohi-americano.webp` | Hot drinks |
+| `kohi-latte` | `Menu/Bebidas Calientes/kohi-latte.png` | `menu/corrected/kohi-latte.webp` | Hot drinks |
+| `dalgona-warm` | `Menu/Bebidas Calientes/dalgona-warm.png` | `menu/corrected/dalgona-warm.webp` | Hot drinks |
+| `ocha-classic` | `Menu/Bebidas Calientes/ocha-classic.png` | `menu/corrected/ocha-classic.webp` | Hot drinks |
+| `ocha-bloom` | `Menu/Bebidas Calientes/ocha-bloom.png` | `menu/corrected/ocha-bloom.webp` | Hot drinks |
+| `matcha-cloud` | `Menu/Bebidas Calientes/matcha-cloud.png` | `menu/corrected/matcha-cloud.webp` | Hot drinks |
+| `onigiri-crunch` | `Menu/Comida Salada/onigiri-crunch.png` | `menu/corrected/onigiri-crunch.webp` | Savory |
+| `onigiri-ocean` | `Menu/Comida Salada/onigiri-ocean.png` | `menu/corrected/onigiri-ocean.webp` | Savory |
+| `onigiri-teri` | `Menu/Comida Salada/onigiri-teri.png` | `menu/corrected/onigiri-teri.webp` | Savory |
+| `pancake-neko` | `Menu/Comida Dulce/pancake-neko.png` | `menu/corrected/pancake-neko.webp` | Sweet |
+| `pancake-fruity` | `Menu/Comida Dulce/pancake-fruity.png` | `menu/corrected/pancake-fruity.webp` | Sweet |
+| `pancake-dream` | `Menu/Comida Dulce/pancake-dream.png` | `menu/corrected/pancake-dream.webp` | Sweet |
+| `mantou-cloud` | `Menu/Comida Dulce/mantou-cloud.png` | `menu/corrected/mantou-cloud.webp` | Sweet |
+| `mantou-choco` | `Menu/Comida Dulce/mantout-choco.png` | `menu/corrected/mantou-choco.webp` | Sweet |
+| `mantou-crunch` | `Menu/Comida Dulce/mantou-crunch.png` | `menu/corrected/mantou-crunch.webp` | Sweet |
+| `sando-cloud` | `Menu/Comida Dulce/sando-cloud.png` | `menu/corrected/sando-cloud.webp` | Sweet |
+| `sando-choco` | `Menu/Comida Dulce/sando-choco.png` | `menu/corrected/sando-choco.webp` | Sweet |
+| `sando-biscoff` | `Menu/Comida Dulce/sando-biscoff.png` | `menu/corrected/sando-biscoff.webp` | Sweet |
+| `cloud-foam` | `Menu/Extras/cloud-foam.png` | `menu/corrected/cloud-foam.webp` | Extras |
+| `pop-pearls` | `Menu/Extras/pop-pearls.png` | `menu/corrected/pop-pearls.webp` | Extras |
+| `bubble-tapioca` | `Menu/Extras/bubble-tapioca.png` | `menu/corrected/bubble-tapioca.webp` | Extras |
+| `combo-neko` | `Menu/Combos/combo-neko.png` | `menu/corrected/combo-neko.webp` | Combos |
+| `combo-maneki` | `Menu/Combos/combo-maneki.png` | `menu/corrected/combo-maneki.webp` | Combos |
+| `combo-yume` | `Menu/Combos/combo-yume.png` | `menu/corrected/combo-yume.webp` | Combos |
+| `combo-matcha-lover` | `Menu/Combos/combo-matcha-lover.png` | `menu/corrected/combo-matcha-lover.webp` | Combos |
+
+The corrected logo variants were inspected but are not substituted into the global Navbar, Hero, or Footer in this phase. `logo-black.webp` is the preferred variant for ivory/paper menu surfaces; `logo-white.webp` is preferred for ink/burgundy surfaces. The discontinued `Combo Onigiri + Bebida` has no active mapping and is not rendered.
+
+### Phase 5L visual treatment
+
+The 38 corrected source PNGs and their 38 WebP derivatives were rechecked for alpha data: all 38 source PNGs and all 38 derivatives report an alpha channel. The visible catalog rectangles were caused by the CSS photo frame background, not by a missing image cutout. No product image was reprocessed; `.phase5f-menu-photo` now uses a transparent background while preserving the existing 768×1152 `object-fit: contain` derivatives. The discovery stage adds scoped ScrollTrigger entrance motion plus hover/focus feedback; reduced-motion users receive the fully visible static state.
 
 ## Phase 4C–5A prototype integration
 
@@ -77,7 +128,7 @@ These derivatives were generated from the supplied Maneki concepts or created as
 
 ### Excluded from prototype integration
 
-Storefronts, full coffee-trailer photographs, interiors, signage, third-party café photography, and architectural references remain excluded. The selected cropped cart detail and uniform concepts are documented separately as non-operational identity concepts. They could imply an existing Maneki location or carry rights limitations. The product menu remains compact and selectively photographed because no remaining reference can be matched confidently to every documented entry without misrepresenting the product.
+Storefronts, full coffee-trailer photographs, interiors, signage, third-party café photography, and architectural references remain excluded. The selected cropped cart detail and uniform concepts are documented separately as non-operational identity concepts. They could imply an existing Maneki location or carry rights limitations. The product menu is now fully photographed from the separately supplied corrected menu package; all remaining source references stay excluded.
 
 ## Reference inventory
 

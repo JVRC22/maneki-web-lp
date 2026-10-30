@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import App from './App';
 import { allMenuItems, menuCombos, menuExtras, menuItems, menuMeta, starterMenuItems } from './data/menu';
+import { menuPhotoAssets } from './data/assets';
 
 test('renders the Maneki customer journey and primary menu path', () => {
   render(<App />);
@@ -35,7 +36,7 @@ test('renders confirmed prices and preserves family details across filters', () 
 
   fireEvent.click(screen.getByRole('tab', { name: 'Combos' }));
   expect(screen.getByRole('heading', { level: 3, name: 'Combos' })).toBeInTheDocument();
-  expect(screen.getByText('Combo Onigiri + Bebida')).toBeInTheDocument();
+  expect(screen.queryByText('Combo Onigiri + Bebida')).not.toBeInTheDocument();
   expect(screen.getAllByLabelText('Precio $160 pesos mexicanos').length).toBeGreaterThan(0);
 
   fireEvent.click(screen.getByRole('tab', { name: 'Extras' }));
@@ -53,8 +54,21 @@ test('starts with a concise menu discovery set without hiding the full catalog',
   fireEvent.click(screen.getByRole('button', { name: 'Explorar el menú completo' }));
 
   expect(within(results).getAllByRole('article')).toHaveLength(allMenuItems.length);
-  expect(screen.getByText('Combo Onigiri + Bebida')).toBeInTheDocument();
-  expect(screen.getByRole('status')).toHaveTextContent('39 opciones');
+  expect(screen.queryByText('Combo Onigiri + Bebida')).not.toBeInTheDocument();
+  expect(screen.getByRole('status')).toHaveTextContent('38 opciones');
+});
+
+test('routes every discovery card to its documented menu family', () => {
+  render(<App />);
+
+  const discoveryButtons = screen.getAllByRole('button', { name: 'Explorar familia' });
+  expect(discoveryButtons).toHaveLength(4);
+
+  fireEvent.click(discoveryButtons[0]);
+  expect(screen.getByRole('tab', { name: 'Bebidas frías' })).toHaveAttribute('aria-selected', 'true');
+
+  fireEvent.click(discoveryButtons[3]);
+  expect(screen.getByRole('tab', { name: 'Comida salada' })).toHaveAttribute('aria-selected', 'true');
 });
 
 test('supports arrow-key movement between menu categories', () => {
@@ -72,7 +86,10 @@ test('keeps all documented menu entries and confirmed price data', () => {
   expect(menuItems).toHaveLength(menuMeta.documentedProductCount);
   expect(menuExtras).toHaveLength(menuMeta.extraCount);
   expect(menuCombos).toHaveLength(menuMeta.comboCount);
-  expect(allMenuItems).toHaveLength(39);
+  expect(allMenuItems).toHaveLength(38);
+  expect(menuCombos.map((item) => item.id)).toEqual(['combo-neko', 'combo-maneki', 'combo-yume', 'combo-matcha-lover']);
+  expect(allMenuItems.every((item) => menuPhotoAssets[item.id])).toBe(true);
+  expect(new Set(Object.keys(menuPhotoAssets)).size).toBe(allMenuItems.length);
   expect(starterMenuItems).toHaveLength(menuMeta.starterCount);
   expect(menuMeta.publicPriceStatus).toBe('CONFIRMED');
   expect(allMenuItems.every((item) => item.publicPrice && item.priceStatus === 'CONFIRMED')).toBe(true);
@@ -91,7 +108,7 @@ test('keeps all documented menu entries and confirmed price data', () => {
     'sando-cloud': '$65', 'sando-choco': '$75', 'sando-biscoff': '$85',
     'cloud-foam': '+$10–12', 'pop-pearls': '+$10', 'bubble-tapioca': '+$10',
     'combo-neko': '$160', 'combo-maneki': '$130', 'combo-yume': '$220',
-    'combo-matcha-lover': '$150', 'combo-onigiri-bebida': '$160',
+    'combo-matcha-lover': '$150',
   };
   expect(Object.fromEntries(allMenuItems.map((item) => [item.id, item.publicPrice]))).toEqual(expectedPrices);
 });
@@ -99,9 +116,9 @@ test('keeps all documented menu entries and confirmed price data', () => {
 test('uses only verified menu-photo mappings for product imagery', () => {
   render(<App />);
 
-  expect(screen.getByRole('img', { name: /Café frío Maneki con cajeta/i })).toHaveAttribute('loading', 'lazy');
-  expect(screen.getByRole('img', { name: /Matcha frío Maneki clásico/i })).toHaveAttribute('loading', 'lazy');
-  expect(screen.queryByRole('img', { name: /Onigiri/i })).not.toBeInTheDocument();
+  expect(screen.getByRole('img', { name: /Kohi Rocks: Café frío Maneki/i })).toHaveAttribute('loading', 'lazy');
+  expect(screen.getByRole('img', { name: /Matcha Kiss: Matcha frío Maneki/i })).toHaveAttribute('loading', 'lazy');
+  expect(screen.getAllByRole('img', { name: /Onigiri/i }).length).toBeGreaterThan(0);
 });
 
 test('isolates the mobile navigation and restores focus after closing', () => {

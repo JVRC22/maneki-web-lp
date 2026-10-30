@@ -49,109 +49,62 @@ export const visualAssets = {
   },
 };
 
-const menuPhotoDimensions = {
-  '01-cafe-frio-cajeta.webp': [600, 895],
-  '02-frappe-chocolate-oreo.webp': [600, 900],
-  '03-matcha-frio-clasico.webp': [600, 1143],
-  '04-matcha-frio-crema-galleta.webp': [600, 1111],
-  '06-refresher-frutos-rojos.webp': [600, 1044],
-  '07-limonada-limon.webp': [600, 1065],
-  '09-cafe-caliente-americano.webp': [900, 803],
-  '10-cafe-caliente-latte.webp': [900, 806],
-  '11-matcha-caliente-latte.webp': [900, 825],
-  '17-pancakes-chocolate.webp': [900, 532],
-  '18-pancakes-fruta.webp': [900, 558],
-  '19-mantou-crema.webp': [900, 607],
-  '22-sando-chocolate-platano.webp': [900, 606],
+const correctedMenuPhotoData = {
+  'kohi-rocks': ['Kohi Rocks', 'Café frío Maneki con hielo y notas de cajeta.', 'Bebidas Frias/koshi-rocks.png'],
+  'tokyo-frappe': ['Tokyo Frappé', 'Frappé frío Maneki de chocolate con galleta.', 'Bebidas Frias/tokyo-frappe.png'],
+  'yume-latte': ['Yume Latte', 'Café frío Maneki con mazapán, pistache o tiramisú.', 'Bebidas Frias/yumme-latte.png'],
+  'matcha-kiss': ['Matcha Kiss', 'Matcha frío Maneki clásico con hielo.', 'Bebidas Frias/matcha-kiss.png'],
+  'midori-cloud': ['Midori Cloud', 'Matcha frío Maneki con crema y galleta.', 'Bebidas Frias/midori-cloud.png'],
+  'hanami-dream': ['Hanami Dream', 'Matcha frío Maneki con fruta de temporada.', 'Bebidas Frias/hanami-dream.png'],
+  'zen-citrus': ['Zen Citrus', 'Refresher Maneki de limón, mango o fresa.', 'Bebidas Frias/zen-citrus.png'],
+  'kuro-berry': ['Kuro Berry', 'Refresher Maneki de durazno, lichi y frutos rojos.', 'Bebidas Frias/kuro-berry.png'],
+  'yuzu-bloom': ['Yuzu Bloom', 'Refresher Maneki de lychee, pera y uva.', 'Bebidas Frias/yuzu-bloom.png'],
+  'limon-neko': ['Limón Neko', 'Limonada mineral Maneki con limón y miel.', 'Bebidas Frias/lomin-neko.png'],
+  'maneki-lime': ['Maneki Lime', 'Limonada mineral Maneki con fruta.', 'Bebidas Frias/maneki-lime.png'],
+  'yuzu-breeze': ['Yuzu Breeze', 'Limonada mineral Maneki con yuzu, lychee y pepino.', 'Bebidas Frias/yuzu-breeze.png'],
+  'bubble-pop': ['Bubble Pop', 'Té frío Maneki con tapioca y fruta.', 'Bebidas Frias/bubble-pop.png'],
+  'kohi-americano': ['Kohi Americano', 'Café americano caliente Maneki.', 'Bebidas Calientes/kohi-americano.png'],
+  'kohi-latte': ['Kohi Latte', 'Café latte caliente Maneki con arte en espuma.', 'Bebidas Calientes/kohi-latte.png'],
+  'dalgona-warm': ['Dalgona Warm', 'Café caliente Maneki con espuma y sabores dulces.', 'Bebidas Calientes/dalgona-warm.png'],
+  'ocha-classic': ['Ocha Classic', 'Té caliente Maneki con limón, miel o sabor clásico.', 'Bebidas Calientes/ocha-classic.png'],
+  'ocha-bloom': ['Ocha Bloom', 'Té caliente Maneki con perfil floral y cítrico.', 'Bebidas Calientes/ocha-bloom.png'],
+  'matcha-cloud': ['Matcha Cloud', 'Matcha caliente Maneki con espuma cremosa.', 'Bebidas Calientes/matcha-cloud.png'],
+  'onigiri-crunch': ['Onigiri Crunch', 'Onigiri empanizado Maneki, sin alga.', 'Comida Salada/onigiri-crunch.png'],
+  'onigiri-ocean': ['Onigiri Ocean', 'Onigiri empanizado Maneki con surimi y vegetales.', 'Comida Salada/onigiri-ocean.png'],
+  'onigiri-teri': ['Onigiri Teri', 'Onigiri empanizado Maneki con pollo teriyaki.', 'Comida Salada/onigiri-teri.png'],
+  'pancake-neko': ['Pancake Neko', 'Hot cakes Maneki con toppings familiares.', 'Comida Dulce/pancake-neko.png'],
+  'pancake-fruity': ['Pancake Fruity', 'Hot cakes Maneki con fruta y almendras.', 'Comida Dulce/pancake-fruity.png'],
+  'pancake-dream': ['Pancake Dream', 'Hot cakes Maneki con matcha, ube, chocolate o cajeta.', 'Comida Dulce/pancake-dream.png'],
+  'mantou-cloud': ['Mantou Cloud', 'Mantou dulce Maneki con crema de vainilla.', 'Comida Dulce/mantou-cloud.png'],
+  'mantou-choco': ['Mantou Choco', 'Mantou dulce Maneki con chocolate, fruta y almendras.', 'Comida Dulce/mantout-choco.png'],
+  'mantou-crunch': ['Mantou Crunch', 'Mantou dulce Maneki con Oreo y textura crujiente.', 'Comida Dulce/mantou-crunch.png'],
+  'sando-cloud': ['Sando Cloud', 'Creamy sando Maneki ligero y dulce.', 'Comida Dulce/sando-cloud.png'],
+  'sando-choco': ['Sando Choco', 'Sando Maneki de chocolate, plátano y almendras.', 'Comida Dulce/sando-choco.png'],
+  'sando-biscoff': ['Sando Biscoff', 'Sando Maneki con crema de Biscoff y galleta.', 'Comida Dulce/sando-biscoff.png'],
+  'cloud-foam': ['Cloud Foam', 'Foam Maneki para personalizar tu bebida.', 'Extras/cloud-foam.png'],
+  'pop-pearls': ['Pop Pearls', 'Bolitas que explotan como adicional.', 'Extras/pop-pearls.png'],
+  'bubble-tapioca': ['Bubble Tapioca', 'Tapioca como adicional para tu bebida.', 'Extras/bubble-tapioca.png'],
+  'combo-neko': ['Combo Neko', 'Combo conceptual con bebida fría y onigiri.', 'Combos/combo-neko.png'],
+  'combo-maneki': ['Combo Maneki', 'Combo conceptual con bebida fría y postre.', 'Combos/combo-maneki.png'],
+  'combo-yume': ['Combo Yume', 'Combo conceptual con dos postres y dos bebidas.', 'Combos/combo-yume.png'],
+  'combo-matcha-lover': ['Combo Matcha Lover', 'Combo conceptual con Matcha Kiss y Matcha Cloud.', 'Combos/combo-matcha-lover.png'],
 };
 
-const menuPhoto = (src, alt, source, confidence = 'probable') => {
-  const [width, height] = menuPhotoDimensions[source] || [900, 900];
-  const largeSrc = src.replace('.webp', '-1200.webp');
+const correctedMenuPhoto = (id, [name, alt, source]) => ({
+  src: `/images/menu/corrected/${id}.webp`,
+  srcSet: `/images/menu/corrected/${id}.webp 768w`,
+  sizes: '(max-width: 768px) 92vw, (max-width: 1200px) 42vw, 520px',
+  alt: `${name}: ${alt}`,
+  source: `Imagenes Corregidas/Menu/${source}`,
+  confidence: 'verified visual association',
+  status: 'CORRECTED CONCEPTUAL MENU PHOTOGRAPH',
+  width: 768,
+  height: 1152,
+});
 
-  return {
-    src: `/images/menu/${src}`,
-    srcSet: `/images/menu/${src} 600w, /images/menu/${largeSrc} 1200w`,
-    sizes: '(max-width: 768px) 50vw, 25vw',
-    alt,
-    source,
-    confidence,
-    status: 'CONCEPTUAL MENU PHOTOGRAPH',
-    width,
-    height,
-  };
-};
-
-// Only photographs with a defensible product or family relationship are mapped
-// to individual entries. Ambiguous photos remain available in the reference
-// package instead of being presented as exact menu claims.
-export const menuPhotoAssets = {
-  'kohi-rocks': menuPhoto(
-    'kohi-rocks.webp',
-    'Café frío Maneki con cajeta y hielo.',
-    '01-cafe-frio-cajeta.webp'
-  ),
-  'tokyo-frappe': menuPhoto(
-    'tokyo-frappe.webp',
-    'Frappé frío Maneki de chocolate con galleta.',
-    '02-frappe-chocolate-oreo.webp'
-  ),
-  'matcha-kiss': menuPhoto(
-    'matcha-kiss.webp',
-    'Matcha frío Maneki clásico con hielo.',
-    '03-matcha-frio-clasico.webp'
-  ),
-  'midori-cloud': menuPhoto(
-    'midori-cloud.webp',
-    'Matcha frío Maneki con crema y galleta.',
-    '04-matcha-frio-crema-galleta.webp'
-  ),
-  'kuro-berry': menuPhoto(
-    'kuro-berry.webp',
-    'Refresher Maneki de frutos rojos.',
-    '06-refresher-frutos-rojos.webp'
-  ),
-  'limon-neko': menuPhoto(
-    'limon-neko.webp',
-    'Limonada mineral Maneki con limón.',
-    '07-limonada-limon.webp'
-  ),
-  'kohi-americano': menuPhoto(
-    'kohi-americano.webp',
-    'Café americano caliente Maneki.',
-    '09-cafe-caliente-americano.webp'
-  ),
-  'kohi-latte': menuPhoto(
-    'kohi-latte.webp',
-    'Café latte caliente Maneki con arte en espuma.',
-    '10-cafe-caliente-latte.webp'
-  ),
-  'matcha-cloud': menuPhoto(
-    'matcha-cloud.webp',
-    'Matcha caliente Maneki con arte en espuma.',
-    '11-matcha-caliente-latte.webp'
-  ),
-  'pancake-neko': menuPhoto(
-    'pancake-neko.webp',
-    'Hot cakes Maneki con chocolate y toppings.',
-    '17-pancakes-chocolate.webp'
-  ),
-  'pancake-fruity': menuPhoto(
-    'pancake-fruity.webp',
-    'Hot cakes Maneki con fresa y plátano.',
-    '18-pancakes-fruta.webp'
-  ),
-  'mantou-cloud': menuPhoto(
-    'mantou-cloud.webp',
-    'Mantou dulce Maneki relleno de crema.',
-    '19-mantou-crema.webp'
-  ),
-  'sando-choco': menuPhoto(
-    'sando-choco.webp',
-    'Sando Maneki de chocolate y plátano.',
-    '22-sando-chocolate-platano.webp'
-  ),
-};
+export const menuPhotoAssets = Object.fromEntries(
+  Object.entries(correctedMenuPhotoData).map(([id, data]) => [id, correctedMenuPhoto(id, data)])
+);
 
 const brandPhoto = (src, alt, source, width, height, status = 'CONCEPTUAL BRAND ARTWORK') => ({
   src: `/images/maneki/brand/${src}`,

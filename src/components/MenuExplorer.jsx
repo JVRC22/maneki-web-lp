@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { allMenuItems, menuCategories, starterMenuItems } from '../data/menu';
 import { menuPhotoAssets, visualAssets } from '../data/assets';
+import { gsap, prefersReducedMotion, useGSAP } from '../motion/gsap';
 
 const discoveryAnchors = [
   {
@@ -37,6 +38,7 @@ const discoveryAnchors = [
     title: 'Cruje por fuera.',
     copy: 'Onigiri empanizado, sin alga, con sabores que se sienten cerca.',
     tone: 'burgundy',
+    image: menuPhotoAssets['onigiri-crunch'],
   },
 ];
 
@@ -91,6 +93,7 @@ function groupByFamily(items) {
 }
 
 export default function MenuExplorer() {
+  const menuRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showAll, setShowAll] = useState(false);
   const categoryButtonRefs = useRef([]);
@@ -102,6 +105,51 @@ export default function MenuExplorer() {
   );
   const items = showAll || selectedCategory !== 'all' ? filteredItems : starterMenuItems;
   const groupedItems = useMemo(() => groupByFamily(items), [items]);
+
+  useGSAP(() => {
+    if (prefersReducedMotion() || !menuRef.current) return undefined;
+
+    const discovery = menuRef.current.querySelector('.phase5l-discovery');
+    if (!discovery) return undefined;
+
+    const entrance = gsap.timeline({
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: {
+        trigger: discovery,
+        start: 'top 82%',
+        once: true,
+      },
+    });
+
+    entrance
+      .fromTo('.phase5l-menu-intro h2',
+        { opacity: 0, transform: 'translate3d(0, 22px, 0)' },
+        { opacity: 1, transform: 'translate3d(0, 0, 0)', duration: 0.58 },
+        0
+      )
+      .fromTo('.phase5l-menu-intro > p:not(.phase5e-label)',
+        { opacity: 0, transform: 'translate3d(0, 14px, 0)' },
+        { opacity: 1, transform: 'translate3d(0, 0, 0)', duration: 0.42 },
+        0.08
+      )
+      .fromTo('.phase5l-menu-proof',
+        { opacity: 0, transform: 'translate3d(0, 12px, 0)' },
+        { opacity: 1, transform: 'translate3d(0, 0, 0)', duration: 0.32 },
+        0.16
+      )
+      .fromTo('.phase5l-discovery-heading',
+        { opacity: 0, transform: 'translate3d(0, 18px, 0)' },
+        { opacity: 1, transform: 'translate3d(0, 0, 0)', duration: 0.52 },
+        0.24
+      )
+      .fromTo('.phase5l-discovery-card',
+        { opacity: 0, transform: 'translate3d(0, 24px, 0)' },
+        { opacity: 1, transform: 'translate3d(0, 0, 0)', duration: 0.56, stagger: 0.09 },
+        0.34
+      );
+
+    return () => entrance.kill();
+  }, { scope: menuRef });
 
   const selectCategory = (categoryId) => {
     setSelectedCategory(categoryId);
@@ -125,27 +173,27 @@ export default function MenuExplorer() {
   };
 
   return (
-    <section className="phase3-section phase3-menu-section phase5e-menu" id="menu" aria-labelledby="menu-title">
+    <section ref={menuRef} className="phase3-section phase3-menu-section phase5e-menu" id="menu" aria-labelledby="menu-title">
       <div className="phase3-container">
-        <div className="phase3-section-heading phase5e-menu-intro">
+        <div className="phase3-section-heading phase5e-menu-intro phase5l-menu-intro">
           <p className="phase5e-label">El menú Maneki</p>
           <h2 id="menu-title">Elige con curiosidad.</h2>
           <p>Empieza con seis antojos, descubre una familia y abre el catálogo completo cuando quieras. Cada precio está expresado en pesos mexicanos.</p>
-          <div className="phase5e-menu-proof" aria-label="Composición documentada del menú">
+          <div className="phase5e-menu-proof phase5l-menu-proof" aria-label="Composición documentada del menú">
             <span><strong>31</strong> bebidas y alimentos</span>
             <span><strong>3</strong> extras</span>
-            <span><strong>5</strong> combos</span>
+            <span><strong>4</strong> combos</span>
           </div>
         </div>
 
-        <div className="phase5e-discovery" aria-labelledby="discovery-title">
-          <div className="phase5e-subheading">
+        <div className="phase5e-discovery phase5l-discovery" aria-labelledby="discovery-title">
+          <div className="phase5e-subheading phase5l-discovery-heading">
             <p className="phase5e-label">Para empezar</p>
             <h3 id="discovery-title">Encuentra tu primer antojo.</h3>
           </div>
           <div className="phase5e-discovery-grid">
             {discoveryAnchors.map((anchor) => (
-              <article className={`phase5e-discovery-card is-${anchor.tone}`} key={anchor.id}>
+              <article className={`phase5e-discovery-card phase5l-discovery-card is-${anchor.tone}`} key={anchor.id}>
                 <div className="phase5e-discovery-media" aria-hidden={!anchor.image}>
                   {anchor.image ? <img src={anchor.image.src} srcSet={anchor.image.srcSet} sizes={anchor.image.sizes} alt="" width={anchor.image.width} height={anchor.image.height} loading="lazy" /> : (
                     <span className="phase5j-food-mark">
@@ -205,7 +253,7 @@ export default function MenuExplorer() {
             </button>
           </div>
           <p className="phase3-visually-hidden" id="menu-status" role="status" aria-live="polite" aria-atomic="true">
-            {showAll ? `Mostrando las ${items.length} opciones del catálogo.` : `Mostrando ${items.length} opciones para empezar. Abre el menú completo para ver las 39 opciones.`}
+            {showAll ? `Mostrando las ${items.length} opciones del catálogo.` : `Mostrando ${items.length} opciones para empezar. Abre el menú completo para ver las 38 opciones.`}
           </p>
           <div className="phase3-menu-families phase5e-menu-families">
             {groupedItems.map((group) => (

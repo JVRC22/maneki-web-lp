@@ -120,7 +120,6 @@ export const menuCombos = [
   { id: 'combo-maneki', category: 'combos', family: 'Combos', name: 'Combo Maneki', description: '1 bebida fría + 1 postre.', documentedPrice: '$130', publicPrice: '$130', price: confirmedPrice('$130'), priceStatus: 'CONFIRMED', type: 'combo' },
   { id: 'combo-yume', category: 'combos', family: 'Combos', name: 'Combo Yume', description: '2 postres + 2 bebidas.', documentedPrice: '$220', publicPrice: '$220', price: confirmedPrice('$220'), priceStatus: 'CONFIRMED', type: 'combo' },
   { id: 'combo-matcha-lover', category: 'combos', family: 'Combos', name: 'Combo Matcha Lover', description: 'Matcha Kiss + Matcha Cloud.', documentedPrice: '$150', publicPrice: '$150', price: confirmedPrice('$150'), priceStatus: 'CONFIRMED', type: 'combo' },
-  { id: 'combo-onigiri-bebida', category: 'combos', family: 'Combos', name: 'Combo Onigiri + Bebida', description: 'Onigiri Crunch + bebida fría.', documentedPrice: '$160', publicPrice: '$160', price: confirmedPrice('$160'), priceStatus: 'CONFIRMED', type: 'combo' },
 ];
 
 export const allMenuItems = [...menuItems, ...menuExtras, ...menuCombos];
