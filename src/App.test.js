@@ -171,6 +171,9 @@ test('integrates conceptual visuals with truthful alternative text and loading p
   expect(screen.getAllByRole('img', { name: /Hanami Dream: Matcha frío Maneki con fruta de temporada/i })
     .some((image) => image.getAttribute('loading') === 'lazy')).toBe(true);
   expect(screen.getByRole('img', { name: /ilustración conceptual de un carrito móvil maneki/i })).toHaveAttribute('src', '/images/maneki/brand/maneki-mini-illustration.svg');
+  expect(screen.queryByText(/Ilustración conceptual de formato móvil/)).not.toBeInTheDocument();
+  expect(screen.getByText('+52 871 XXX XXXX')).toBeInTheDocument();
+  expect(screen.getByText('hola@maneki.example')).toBeInTheDocument();
 });
 
 test('switches the featured specimen without changing the menu state', () => {
